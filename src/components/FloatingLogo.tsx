@@ -119,7 +119,7 @@ export const FloatingLogo = () => {
       transition={{ duration: 0.5 }}
     >
       <motion.img
-        src="https://raw.githubusercontent.com/stackblitz/stackblitz-images/main/bamboy-logo.png"
+        src="https://bamboy.de/Bamboy-Logo.png"
         alt="BAM BOY"
         className="w-full h-full object-contain filter contrast-125"
         animate={{
