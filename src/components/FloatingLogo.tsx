@@ -10,7 +10,6 @@ export const FloatingLogo = () => {
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
   
-  // Basis Y position using springs for smooth transitions
   const y = useSpring(0, {
     stiffness: 60,
     damping: 15,
@@ -55,13 +54,13 @@ export const FloatingLogo = () => {
       const docHeight = document.body.scrollHeight - window.innerHeight;
       const scrollProgress = docHeight > 0 ? scrollTop / docHeight : 0;
       
-      // Position logo to remain visible at bottom of screen
-      const minY = viewportHeight * 0.6; // Start at 60% of screen height
-      const maxY = viewportHeight * 0.75; // Never go below 75% of screen height
+      // Position like in the second-to-last code
+      const minY = window.innerHeight * 0.125;
+      const maxY = window.innerHeight - 80;
       const targetY = minY + (maxY - minY) * scrollProgress;
       y.set(targetY);
       
-      // Show logo only when at bottom of page
+      // Only show logo when scrolled to bottom (95%)
       if (scrollProgress > 0.95) {
         if (wasManuallyHidden.current) {
           setVisible(true);
@@ -80,7 +79,7 @@ export const FloatingLogo = () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', updateDimensions);
     };
-  }, [viewportHeight, y]);
+  }, [y]);
 
   const handleClick = () => {
     setVisible(false);
@@ -88,7 +87,7 @@ export const FloatingLogo = () => {
   };
 
   // Calculate logo size as 30% of viewport width, capped at a reasonable maximum
-  const logoSize = Math.min(viewportWidth * 0.3, 240);
+  const logoSize = Math.min(viewportWidth * 0.3, 300);
   
   return (
     <AnimatePresence>
@@ -96,27 +95,30 @@ export const FloatingLogo = () => {
         <motion.div
           style={{
             position: 'fixed',
-            left: '5%',
+            left: '1.5rem',
             zIndex: 1000,
-            width: `${logoSize}px`,
-            height: `${logoSize}px`,
-            y: additionalY,
+            y: y,
             rotate: springRotation,
+            mixBlendMode: 'lighten',
             transformStyle: 'preserve-3d',
             perspective: 1000,
+            width: `${logoSize}px`,
+            height: `${logoSize}px`,
           }}
-          initial={{ opacity: 0, scale: 0.3, y: viewportHeight * 0.8 }}
-          animate={{ 
-            opacity: 1, 
-            scale: 1,
-            y: y,
+          initial={{ opacity: 0, scale: 0.6, rotate: -10 }}
+          animate={{
+            opacity: 1,
+            scale: [1, 1.02, 0.98, 1.01, 1],
+            rotate: 0,
+            y: additionalY,
           }}
-          exit={{ opacity: 0, scale: 0, rotate: 15 }}
+          exit={{ opacity: 0, scale: 0.8, rotate: 5 }}
+          whileHover={{ scale: 1.1, rotate: [0, -5, 5, -3, 3, 0] }}
           transition={{
             type: 'spring',
-            stiffness: 80,
-            damping: 15,
-            mass: 1,
+            stiffness: 500,
+            damping: 10,
+            bounce: 0.4,
           }}
           className="cursor-pointer"
           onClick={handleClick}
@@ -124,31 +126,18 @@ export const FloatingLogo = () => {
           <motion.img
             src="https://bamboy.de/Bamboy-Logo.png"
             alt="BAM BOY"
-            className="w-full h-full object-contain filter drop-shadow-xl"
+            className="w-full h-full object-contain filter drop-shadow-md"
             animate={{
               scale: [1, 1.05, 0.97, 1.03, 1],
               rotate: [0, 2, -2, 1, 0],
-              y: [0, -8, 5, -3, 0],
-              x: [0, 5, -3, 7, 0],
-              filter: [
-                'drop-shadow(0px 0px 8px rgba(0,0,0,0.3))',
-                'drop-shadow(0px 0px 12px rgba(0,0,0,0.4))',
-                'drop-shadow(0px 0px 6px rgba(0,0,0,0.2))',
-                'drop-shadow(0px 0px 10px rgba(0,0,0,0.3))',
-                'drop-shadow(0px 0px 8px rgba(0,0,0,0.3))',
-              ]
+              y: [0, -5, 3, -2, 0],
+              x: [0, 3, -2, 4, 0],
             }}
             transition={{
-              duration: 12,
+              duration: 8,
               repeat: Infinity,
               repeatType: "mirror",
               ease: "easeInOut",
-              times: [0, 0.25, 0.5, 0.75, 1]
-            }}
-            whileHover={{
-              scale: 1.1,
-              filter: 'drop-shadow(0px 0px 15px rgba(0,0,0,0.5))',
-              transition: { duration: 0.3 }
             }}
           />
         </motion.div>
