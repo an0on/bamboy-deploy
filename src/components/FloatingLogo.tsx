@@ -6,6 +6,7 @@ export const FloatingLogo = () => {
   const [visible, setVisible] = useState(true);
   const hasAppeared = useRef(false);
   const wasManuallyHidden = useRef(false);
+  const [viewportWidth, setViewportWidth] = useState(0);
   
   const y = useSpring(0, {
     stiffness: 60,
@@ -14,6 +15,13 @@ export const FloatingLogo = () => {
   });
 
   useEffect(() => {
+    const updateDimensions = () => {
+      setViewportWidth(window.innerWidth);
+    };
+    
+    updateDimensions();
+    window.addEventListener('resize', updateDimensions);
+    
     const handleScroll = () => {
       const scrollTop = window.scrollY;
       const docHeight = document.body.scrollHeight - window.innerHeight;
@@ -32,7 +40,11 @@ export const FloatingLogo = () => {
     
     window.addEventListener('scroll', handleScroll);
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', updateDimensions);
+    };
   }, []);
 
   useEffect(() => {
@@ -47,6 +59,9 @@ export const FloatingLogo = () => {
     wasManuallyHidden.current = true;
   };
 
+  // Calculate logo size as 30% of viewport width, capped at a reasonable maximum
+  const logoSize = Math.min(viewportWidth * 0.3, 300);
+  
   return (
     <AnimatePresence>
       {visible && (
@@ -59,6 +74,8 @@ export const FloatingLogo = () => {
             mixBlendMode: 'lighten',
             transformStyle: 'preserve-3d',
             perspective: 1000,
+            width: `${logoSize}px`,
+            height: `${logoSize}px`,
           }}
           initial={{ opacity: 0, scale: 0.6, rotate: -10 }}
           animate={{
@@ -74,7 +91,7 @@ export const FloatingLogo = () => {
             damping: 10,
             bounce: 0.4,
           }}
-          className="w-16 h-16 cursor-pointer"
+          className="cursor-pointer"
           onClick={handleClick}
         >
           <motion.img
