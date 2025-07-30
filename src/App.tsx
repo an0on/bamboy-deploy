@@ -27,7 +27,7 @@ function App() {
               <AnimatedTitle />
             </motion.div>
             <Quote
-              text="In einer Welt aus Nullen und Einsen, seien wir der Glitch, der Menschen zum Lächeln bringt."
+              text="In a world of ones and zeros, be the glitch that makes people smile."
               author="Digital Philosopher"
             />
           </ParallaxElement>
@@ -42,7 +42,7 @@ function App() {
               <Circle className="w-16 h-16 text-white/90 mx-auto" strokeWidth={1.5} />
             </div>
             <Quote
-              text="Sie sagten, KI würde die Welt übernehmen. Plot Twist: Sie will nur mit Seifenblasen spielen."
+              text="They said AI would take over the world. Plot twist: It just wants to play with bubbles."
               author="Tech Optimist"
             />
           </ParallaxElement>
@@ -55,7 +55,7 @@ function App() {
           <ParallaxElement speed={-0.4}>
             <Brain className="w-16 h-16 text-white/90 mx-auto mb-6" strokeWidth={1.5} />
             <Quote
-              text="Der beste Code ist der, der Freude bringt. Der zweitbeste ist der, der funktioniert."
+              text="The best code is the one that brings joy. The second best is the one that works."
               author="Happy Developer"
             />
           </ParallaxElement>
@@ -68,7 +68,7 @@ function App() {
           <ParallaxElement speed={0.2}>
             <Rocket className="w-16 h-16 text-white/90 mx-auto mb-6" strokeWidth={1.5} />
             <Quote
-              text="In der Zukunft werden Websites nicht nur besucht. Sie werden erlebt."
+              text="In the future, websites won't just be visited. They'll be experienced."
               author="Digital Explorer"
             />
           </ParallaxElement>

@@ -13,107 +13,6 @@ export const Footer = () => {
       viewport={{ once: true }}
     >
       <div className="container mx-auto px-6">
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          {/* Company Info */}
-          <motion.div
-            className="text-center md:text-left"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
-          >
-            <div className="flex items-center justify-center md:justify-start space-x-3 mb-4">
-              <img 
-                src="/Bamboy-Logo.png" 
-                alt="BAM BOY Logo" 
-                className="w-10 h-10 object-contain"
-              />
-              <span className="text-xl font-bold text-white">BAMBOY</span>
-            </div>
-            <p className="text-white/70 text-sm leading-relaxed">
-              In einer Welt aus Nullen und Einsen sein wir der Glitch, 
-              der Menschen zum Lächeln bringt.
-            </p>
-          </motion.div>
-
-          {/* Quick Links */}
-          <motion.div
-            className="text-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-white font-semibold mb-4">Quick Links</h3>
-            <div className="space-y-2">
-              <motion.a
-                href="#home"
-                className="block text-white/70 hover:text-white transition-colors duration-300 text-sm"
-                whileHover={{ x: 5 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              >
-                Home
-              </motion.a>
-              <motion.a
-                href="#about"
-                className="block text-white/70 hover:text-white transition-colors duration-300 text-sm"
-                whileHover={{ x: 5 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              >
-                Über uns
-              </motion.a>
-              <motion.a
-                href="#services"
-                className="block text-white/70 hover:text-white transition-colors duration-300 text-sm"
-                whileHover={{ x: 5 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              >
-                Services
-              </motion.a>
-              <motion.a
-                href="#contact"
-                className="block text-white/70 hover:text-white transition-colors duration-300 text-sm"
-                whileHover={{ x: 5 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              >
-                Kontakt
-              </motion.a>
-            </div>
-          </motion.div>
-
-          {/* Contact Info */}
-          <motion.div
-            className="text-center md:text-right"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-white font-semibold mb-4">Kontakt</h3>
-            <div className="space-y-3">
-              <motion.div
-                className="flex items-center justify-center md:justify-end space-x-2 text-white/70 text-sm"
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              >
-                <Mail size={16} />
-                <span>Kontakt verfügbar im Impressum</span>
-              </motion.div>
-              <motion.div
-                className="flex items-center justify-center md:justify-end space-x-2 text-white/70 text-sm"
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              >
-                <MapPin size={16} />
-                <span>Deutschland</span>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Divider */}
-        <div className="border-t border-white/10 mb-6"></div>
 
         {/* Bottom Footer */}
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
@@ -143,14 +42,6 @@ export const Footer = () => {
               <span>Impressum</span>
               <ExternalLink size={14} />
             </motion.a>
-            <motion.a
-              href="/datenschutz"
-              className="text-white/60 hover:text-white transition-colors duration-300"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            >
-              Datenschutz
-            </motion.a>
           </motion.div>
         </div>
 
@@ -163,7 +54,7 @@ export const Footer = () => {
           viewport={{ once: true }}
         >
           <p className="text-white/50 text-xs">
-            Made with <span className="text-green-400">❤️</span> and lots of ☕ in Deutschland
+            Made with <span className="text-green-400">💚</span> and lots of 🥦 in Germany
           </p>
         </motion.div>
       </div>

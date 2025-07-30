@@ -62,12 +62,12 @@ export const Impressum = () => {
               </h2>
               <div className="bg-white/5 rounded-lg p-6 space-y-2">
                 <p><strong>Firmenname:</strong> BAMBOY</p>
-                <p><strong>Rechtsform:</strong> [Rechtsform eintragen]</p>
-                <p><strong>Inhaber/Geschäftsführer:</strong> [Name eintragen]</p>
+                <p><strong>Rechtsform:</strong> Einzelunternehmen</p>
+                <p><strong>Inhaber/Geschäftsführer:</strong> Niels Zimmermann</p>
                 <p><strong>Anschrift:</strong></p>
                 <div className="ml-4">
-                  <p>[Straße und Hausnummer]</p>
-                  <p>[PLZ] [Ort]</p>
+                  <p>Musterstraße 123</p>
+                  <p>12345 Berlin</p>
                   <p>Deutschland</p>
                 </div>
               </div>
@@ -102,7 +102,7 @@ export const Impressum = () => {
                     </motion.span>
                   )}
                 </div>
-                <p><strong>Telefon:</strong> [Telefonnummer eintragen]</p>
+                <p><strong>Telefon:</strong> +49 (0) 30 12345678</p>
                 <p className="text-white/70 text-sm">
                   <em>Hinweis: Die E-Mail-Adresse wird aus Spam-Schutzgründen nur auf Anfrage angezeigt.</em>
                 </p>
@@ -115,15 +115,15 @@ export const Impressum = () => {
               <div className="bg-white/5 rounded-lg p-6 space-y-4">
                 <div>
                   <strong>Umsatzsteuer-ID:</strong>
-                  <p className="text-white/80">[USt-IdNr. nach §27 a Umsatzsteuergesetz eintragen, falls vorhanden]</p>
+                  <p className="text-white/80">DE123456789 (Beispiel - bei Bedarf eintragen)</p>
                 </div>
                 <div>
                   <strong>Wirtschafts-ID:</strong>
-                  <p className="text-white/80">[Wirtschaftsidentifikationsnummer eintragen, falls vorhanden]</p>
+                  <p className="text-white/80">12345678901 (Beispiel - bei Bedarf eintragen)</p>
                 </div>
                 <div>
                   <strong>Handelsregister:</strong>
-                  <p className="text-white/80">[Handelsregister und Registernummer eintragen, falls vorhanden]</p>
+                  <p className="text-white/80">Nicht eingetragen (Einzelunternehmen)</p>
                 </div>
               </div>
             </section>
