@@ -65,6 +65,7 @@ export const Impressum = () => {
               <div className="bg-white/5 rounded-lg p-6 space-y-2">
                 <p className="text-lg"><strong>Niels Zimmermann</strong></p>
                 <p>Kennenburgerstr. 43</p>
+                <p>73732 Esslingen am Neckar</p>
                 <div className="mt-4">
                   <strong>E-Mail:</strong>
                   {!showEmail ? (
