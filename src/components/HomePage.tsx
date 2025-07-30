@@ -34,11 +34,11 @@ export const HomePage = () => {
         <div className="text-center relative">
           <ParallaxElement speed={0.3}>
             <div className="mb-12">
-              <div className="w-16 h-16 mx-auto">
+              <div className="w-48 h-48 mx-auto">
                 <Orb
-                  hoverIntensity={0.5}
-                  rotateOnHover={true}
-                  hue={200}
+                  hoverIntensity={0.49}
+                  rotateOnHover={false}
+                  hue={93}
                   forceHoverState={false}
                 />
               </div>
