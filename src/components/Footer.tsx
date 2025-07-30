@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, ExternalLink } from 'lucide-react';
 
 export const Footer = () => {
@@ -33,15 +34,16 @@ export const Footer = () => {
             transition={{ duration: 0.6, delay: 0.5 }}
             viewport={{ once: true }}
           >
-            <motion.a
-              href="/impressum"
-              className="text-white/60 hover:text-white transition-colors duration-300 flex items-center space-x-1"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            >
-              <span>Impressum</span>
-              <ExternalLink size={14} />
-            </motion.a>
+            <Link to="/impressum">
+              <motion.span
+                className="text-white/60 hover:text-white transition-colors duration-300 flex items-center space-x-1"
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              >
+                <span>Impressum</span>
+                <ExternalLink size={14} />
+              </motion.span>
+            </Link>
           </motion.div>
         </div>
 

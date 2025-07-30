@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { ArrowLeft, Shield, Mail } from 'lucide-react';
 import { useState } from 'react';
 
@@ -23,17 +24,18 @@ export const Impressum = () => {
     <div className="min-h-screen bg-gradient-to-b from-purple-700 via-blue-600 to-green-500 py-20">
       <div className="container mx-auto px-6 max-w-4xl">
         {/* Back Button */}
-        <motion.button
-          onClick={() => window.history.back()}
-          className="flex items-center space-x-2 text-white/80 hover:text-white mb-8 transition-colors duration-300"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          whileHover={{ x: -5 }}
-        >
-          <ArrowLeft size={20} />
-          <span>Zurück</span>
-        </motion.button>
+        <Link to="/">
+          <motion.div
+            className="flex items-center space-x-2 text-white/80 hover:text-white mb-8 transition-colors duration-300 cursor-pointer"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            whileHover={{ x: -5 }}
+          >
+            <ArrowLeft size={20} />
+            <span>Zurück</span>
+          </motion.div>
+        </Link>
 
         {/* Header */}
         <motion.div
