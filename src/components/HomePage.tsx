@@ -1,10 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Circle, Brain, Rocket } from 'lucide-react';
+import { Brain, Rocket } from 'lucide-react';
 import { Quote } from './Quote';
 import { Section } from './Section';
 import { ParallaxElement } from './ParallaxElement';
 import { AnimatedTitle } from './AnimatedTitle';
+import Orb from './Orb';
 
 export const HomePage = () => {
   return (
@@ -33,7 +34,14 @@ export const HomePage = () => {
         <div className="text-center relative">
           <ParallaxElement speed={0.3}>
             <div className="mb-12">
-              <Circle className="w-16 h-16 text-white/90 mx-auto" strokeWidth={1.5} />
+              <div className="w-16 h-16 mx-auto">
+                <Orb
+                  hoverIntensity={0.5}
+                  rotateOnHover={true}
+                  hue={200}
+                  forceHoverState={false}
+                />
+              </div>
             </div>
             <Quote
               text="They said AI would take over the world. Plot twist: It just wants to play with bubbles."
