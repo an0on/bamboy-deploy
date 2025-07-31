@@ -309,6 +309,7 @@ const TextTrail: React.FC<TextTrailProps> = ({
       renderer.render(scene, cam);
       renderer.setRenderTarget(null);
       renderer.clear();
+      renderer.render(fluidScene, cam);
       renderer.render(scene, cam);
       [rt0, rt1] = [rt1, rt0];
     });

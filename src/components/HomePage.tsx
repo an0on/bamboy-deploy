@@ -14,15 +14,15 @@ export const HomePage = () => {
               text="BAMBOY"
               fontFamily="system-ui"
               fontWeight="900"
-              noiseFactor={1.2}
-              noiseScale={0.001}
-              rgbPersistFactor={0.95}
-              alphaPersistFactor={0.92}
+              noiseFactor={2.0}
+              noiseScale={0.003}
+              rgbPersistFactor={0.9}
+              alphaPersistFactor={0.85}
               animateColor={true}
               startColor="#ffffff"
               textColor="#ffffff"
               backgroundColor={0x000000}
-              colorCycleInterval={2000}
+              colorCycleInterval={1500}
               supersample={2}
             />
           </div>
