@@ -1,6 +1,7 @@
 import React from 'react';
 import { Quote } from './Quote';
 import { Section } from './Section';
+import TextTrail from './TextTrail';
 
 export const HomePage = () => {
   return (
@@ -8,9 +9,23 @@ export const HomePage = () => {
       {/* Hero Section */}
       <Section className="from-purple-700 pt-20" id="home">
         <div className="text-center">
-          <h1 className="text-6xl md:text-8xl font-bold text-white mb-8">
-            BAMBOY
-          </h1>
+          <div className="h-32 md:h-40 mb-8">
+            <TextTrail 
+              text="BAMBOY"
+              fontFamily="system-ui"
+              fontWeight="900"
+              noiseFactor={1.2}
+              noiseScale={0.001}
+              rgbPersistFactor={0.95}
+              alphaPersistFactor={0.92}
+              animateColor={true}
+              startColor="#ffffff"
+              textColor="#ffffff"
+              backgroundColor={0x000000}
+              colorCycleInterval={2000}
+              supersample={2}
+            />
+          </div>
           <Quote
             text="In a world of ones and zeros, be the glitch that makes people smile."
             author="Digital Philosopher"
