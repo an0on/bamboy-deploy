@@ -1,11 +1,20 @@
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
+import GooeyNav from './GooeyNav';
+import LightRays from './LightRays';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+  const navItems = [
+    { label: "Home", href: "#home" },
+    { label: "About", href: "#about" },
+    { label: "Services", href: "#services" },
+    { label: "Contact", href: "#contact" },
+  ];
 
   return (
     <motion.header
@@ -14,7 +23,23 @@ export const Header = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, delay: 0.2 }}
     >
-      <div className="container mx-auto px-6 py-4">
+      {/* LightRays Background Effect */}
+      <div className="absolute inset-0 z-0">
+        <LightRays
+          raysOrigin="top-center"
+          raysColor="#00ffff"
+          raysSpeed={1.5}
+          lightSpread={0.8}
+          rayLength={1.2}
+          followMouse={true}
+          mouseInfluence={0.1}
+          noiseAmount={0.1}
+          distortion={0.05}
+          className="opacity-30"
+        />
+      </div>
+
+      <div className="container mx-auto px-6 py-4 relative z-10">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <motion.div
@@ -30,41 +55,19 @@ export const Header = () => {
             <span className="text-2xl font-bold text-white">BAMBOY</span>
           </motion.div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <motion.a
-              href="#home"
-              className="text-white/90 hover:text-white transition-colors duration-300"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Home
-            </motion.a>
-            <motion.a
-              href="#about"
-              className="text-white/90 hover:text-white transition-colors duration-300"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Über uns
-            </motion.a>
-            <motion.a
-              href="#services"
-              className="text-white/90 hover:text-white transition-colors duration-300"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Services
-            </motion.a>
-            <motion.a
-              href="#contact"
-              className="text-white/90 hover:text-white transition-colors duration-300"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Kontakt
-            </motion.a>
-          </nav>
+          {/* Desktop Navigation - GooeyNav */}
+          <div className="hidden md:block">
+            <GooeyNav
+              items={navItems}
+              particleCount={15}
+              particleDistances={[90, 10]}
+              particleR={100}
+              initialActiveIndex={0}
+              animationTime={600}
+              timeVariance={300}
+              colors={[1, 2, 3, 1, 2, 3, 1, 4]}
+            />
+          </div>
 
           {/* Mobile Menu Button */}
           <motion.button
@@ -87,38 +90,17 @@ export const Header = () => {
           transition={{ duration: 0.3 }}
         >
           <div className="flex flex-col space-y-4 pb-4">
-            <motion.a
-              href="#home"
-              className="text-white/90 hover:text-white transition-colors duration-300"
-              onClick={() => setIsMenuOpen(false)}
-              whileTap={{ scale: 0.95 }}
-            >
-              Home
-            </motion.a>
-            <motion.a
-              href="#about"
-              className="text-white/90 hover:text-white transition-colors duration-300"
-              onClick={() => setIsMenuOpen(false)}
-              whileTap={{ scale: 0.95 }}
-            >
-              Über uns
-            </motion.a>
-            <motion.a
-              href="#services"
-              className="text-white/90 hover:text-white transition-colors duration-300"
-              onClick={() => setIsMenuOpen(false)}
-              whileTap={{ scale: 0.95 }}
-            >
-              Services
-            </motion.a>
-            <motion.a
-              href="#contact"
-              className="text-white/90 hover:text-white transition-colors duration-300"
-              onClick={() => setIsMenuOpen(false)}
-              whileTap={{ scale: 0.95 }}
-            >
-              Kontakt
-            </motion.a>
+            {navItems.map((item, index) => (
+              <motion.a
+                key={index}
+                href={item.href}
+                className="text-white/90 hover:text-white transition-colors duration-300"
+                onClick={() => setIsMenuOpen(false)}
+                whileTap={{ scale: 0.95 }}
+              >
+                {item.label}
+              </motion.a>
+            ))}
           </div>
         </motion.nav>
       </div>

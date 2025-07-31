@@ -7,15 +7,30 @@ import { ParallaxElement } from './ParallaxElement';
 import TextTrail from './TextTrail';
 import Orb from './Orb';
 import VariableProximity from './VariableProximity';
+import Particles from './Particles';
 
 export const HomePage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   return (
     <div ref={containerRef} style={{ position: 'relative' }}>
-      {/* Hero Section with TextTrail inside Orb */}
-      <Section className="from-purple-700 pt-20" id="home">
-        <div className="text-center relative">
+      {/* Hero Section with TextTrail inside Orb and Particles Background */}
+      <Section className="from-purple-700 pt-20 relative" id="home">
+        {/* Particles Background Effect - over the gradient background */}
+        <div className="absolute inset-0 z-0">
+          <Particles
+            particleColors={['#ffffff', '#ffffff']}
+            particleCount={200}
+            particleSpread={10}
+            speed={0.1}
+            particleBaseSize={100}
+            moveParticlesOnHover={true}
+            alphaParticles={false}
+            disableRotation={false}
+          />
+        </div>
+        
+        <div className="text-center relative z-10">
           <ParallaxElement speed={-0.5} className="relative z-10">
             <motion.div
               initial={{ scale: 0 }}
