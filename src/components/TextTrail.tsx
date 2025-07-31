@@ -153,8 +153,8 @@ const TextTrail: React.FC<TextTrailProps> = ({
     });
     let { w, h } = size();
 
-    const renderer = new WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setClearColor(new Color(0x000000), 0);
+    const renderer = new WebGLRenderer({ antialias: true, alpha: true, premultipliedAlpha: false });
+    renderer.autoClear = false;
     renderer.setPixelRatio(window.devicePixelRatio || 1);
     renderer.setSize(w, h);
     ref.current.appendChild(renderer.domElement);
@@ -303,13 +303,12 @@ const TextTrail: React.FC<TextTrailProps> = ({
       quadMat.uniforms.time.value = clock.getElapsedTime();
       labelMat.uniforms.color.value.set(...persistColor.current);
 
-      renderer.autoClearColor = false;
       renderer.setRenderTarget(rt0);
-      renderer.clearColor();
+      renderer.clear();
       renderer.render(fluidScene, cam);
       renderer.render(scene, cam);
       renderer.setRenderTarget(null);
-      renderer.render(fluidScene, cam);
+      renderer.clear();
       renderer.render(scene, cam);
       [rt0, rt1] = [rt1, rt0];
     });
