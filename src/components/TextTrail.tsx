@@ -111,7 +111,7 @@ export interface TextTrailProps {
   animateColor?: boolean;
   startColor?: string;
   textColor?: string;
-  backgroundColor?: number | string;
+  backgroundColor?: number | string | "transparent";
   colorCycleInterval?: number;
   supersample?: number;
 }
@@ -127,7 +127,7 @@ const TextTrail: React.FC<TextTrailProps> = ({
   animateColor = false,
   startColor = "#ffffff",
   textColor = "#ffffff",
-  backgroundColor = 0x271e37,
+  backgroundColor = "transparent",
   colorCycleInterval = 3000,
   supersample = 2,
 }) => {
@@ -153,8 +153,12 @@ const TextTrail: React.FC<TextTrailProps> = ({
     });
     let { w, h } = size();
 
-    const renderer = new WebGLRenderer({ antialias: true });
-    renderer.setClearColor(new Color(backgroundColor as any), 0);
+    const renderer = new WebGLRenderer({ antialias: true, alpha: true });
+    if (backgroundColor === "transparent") {
+      renderer.setClearColor(new Color(0x000000), 0);
+    } else {
+      renderer.setClearColor(new Color(backgroundColor as any), 1);
+    }
     renderer.setPixelRatio(window.devicePixelRatio || 1);
     renderer.setSize(w, h);
     ref.current.appendChild(renderer.domElement);
