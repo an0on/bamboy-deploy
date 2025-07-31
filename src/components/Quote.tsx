@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import GlitchText from './GlitchText';
 
 interface QuoteProps {
   text: string;
@@ -34,7 +35,18 @@ export const Quote = ({ text, author }: QuoteProps) => {
                 damping: 20
               }}
             >
-              {word}
+              {word.toLowerCase() === 'glitch' ? (
+                <GlitchText
+                  speed={1}
+                  enableShadows={true}
+                  enableOnHover={true}
+                  className="text-2xl md:text-3xl font-light inline-block"
+                >
+                  {word}
+                </GlitchText>
+              ) : (
+                word
+              )}
             </motion.span>
           ))}
         </motion.div>

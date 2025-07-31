@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Brain, Rocket } from 'lucide-react';
 import { Quote } from './Quote';
@@ -6,11 +6,14 @@ import { Section } from './Section';
 import { ParallaxElement } from './ParallaxElement';
 import TextTrail from './TextTrail';
 import Orb from './Orb';
+import VariableProximity from './VariableProximity';
 
 export const HomePage = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
   return (
-    <>
-      {/* Hero Section with AnimatedTitle */}
+    <div ref={containerRef} style={{ position: 'relative' }}>
+      {/* Hero Section with TextTrail inside Orb */}
       <Section className="from-purple-700 pt-20" id="home">
         <div className="text-center relative">
           <ParallaxElement speed={-0.5} className="relative z-10">
@@ -18,9 +21,27 @@ export const HomePage = () => {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ duration: 0.8 }}
-              className="h-32"
+              className="relative w-96 h-96 mx-auto mb-8"
             >
-              <TextTrail />
+              {/* Orb as background */}
+              <div className="absolute inset-0 w-full h-full">
+                <Orb
+                  hoverIntensity={0.49}
+                  rotateOnHover={false}
+                  hue={93}
+                  forceHoverState={false}
+                />
+              </div>
+              {/* TextTrail in the center */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-64 h-32">
+                  <TextTrail 
+                    text="BAMBOY"
+                    fontWeight="900"
+                    backgroundColor={0x000000}
+                  />
+                </div>
+              </div>
             </motion.div>
             <Quote
               text="In a world of ones and zeros, be the glitch that makes people smile."
@@ -34,16 +55,6 @@ export const HomePage = () => {
       <Section id="about">
         <div className="text-center relative">
           <ParallaxElement speed={0.3}>
-            <div className="mb-12">
-              <div className="w-48 h-48 mx-auto">
-                <Orb
-                  hoverIntensity={0.49}
-                  rotateOnHover={false}
-                  hue={93}
-                  forceHoverState={false}
-                />
-              </div>
-            </div>
             <Quote
               text="They said AI would take over the world. Plot twist: It just wants to play with bubbles."
               author="Tech Optimist"
@@ -57,10 +68,20 @@ export const HomePage = () => {
         <div className="text-center relative">
           <ParallaxElement speed={-0.4}>
             <Brain className="w-16 h-16 text-white/90 mx-auto mb-6" strokeWidth={1.5} />
-            <Quote
-              text="The best code is the one that brings joy. The second best is the one that works."
-              author="Happy Developer"
-            />
+            <div className="max-w-2xl mx-auto text-center p-8">
+              <div className="text-2xl md:text-3xl font-light text-white/90 mb-4">
+                <VariableProximity
+                  label="The best code is the one that brings joy. The second best is the one that works."
+                  fromFontVariationSettings="'wght' 400"
+                  toFontVariationSettings="'wght' 900"
+                  containerRef={containerRef}
+                  radius={150}
+                  falloff="linear"
+                  className="text-white/90"
+                />
+              </div>
+              <p className="text-lg text-white/60">— Happy Developer</p>
+            </div>
           </ParallaxElement>
         </div>
       </Section>
@@ -77,6 +98,6 @@ export const HomePage = () => {
           </ParallaxElement>
         </div>
       </Section>
-    </>
+    </div>
   );
 };
