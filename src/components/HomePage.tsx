@@ -9,7 +9,7 @@ export const HomePage = () => {
       {/* Hero Section */}
       <Section className="from-purple-700 pt-20" id="home">
         <div className="text-center">
-          <div className="h-32 md:h-40 mb-8">
+          <div className="h-48 md:h-64 mb-8 w-full">
             <TextTrail 
               text="BAMBOY"
               fontFamily="system-ui"
