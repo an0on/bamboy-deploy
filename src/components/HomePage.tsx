@@ -4,7 +4,7 @@ import { Brain, Rocket } from 'lucide-react';
 import { Quote } from './Quote';
 import { Section } from './Section';
 import { ParallaxElement } from './ParallaxElement';
-import { AnimatedTitle } from './AnimatedTitle';
+import TextTrail from './TextTrail';
 import Orb from './Orb';
 
 export const HomePage = () => {
@@ -18,8 +18,9 @@ export const HomePage = () => {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ duration: 0.8 }}
+              className="h-32"
             >
-              <AnimatedTitle />
+              <TextTrail />
             </motion.div>
             <Quote
               text="In a world of ones and zeros, be the glitch that makes people smile."
