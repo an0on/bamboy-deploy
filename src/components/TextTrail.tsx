@@ -153,7 +153,13 @@ const TextTrail: React.FC<TextTrailProps> = ({
     });
     let { w, h } = size();
 
-    const renderer = new WebGLRenderer({ antialias: true, alpha: true, premultipliedAlpha: false });
+    const renderer = new WebGLRenderer({ 
+      antialias: true, 
+      alpha: true, 
+      premultipliedAlpha: false,
+      preserveDrawingBuffer: true
+    });
+    renderer.setClearColor(0x000000, 0);
     renderer.autoClear = false;
     renderer.setPixelRatio(window.devicePixelRatio || 1);
     renderer.setSize(w, h);
@@ -303,13 +309,15 @@ const TextTrail: React.FC<TextTrailProps> = ({
       quadMat.uniforms.time.value = clock.getElapsedTime();
       labelMat.uniforms.color.value.set(...persistColor.current);
 
+      // Render to render target with persistence effect
       renderer.setRenderTarget(rt0);
-      renderer.clear();
+      renderer.clear(true, true, true);
       renderer.render(fluidScene, cam);
       renderer.render(scene, cam);
+      
+      // Render to screen with transparent background
       renderer.setRenderTarget(null);
-      renderer.clear();
-      renderer.render(fluidScene, cam);
+      renderer.clearColor();
       renderer.render(scene, cam);
       [rt0, rt1] = [rt1, rt0];
     });
@@ -344,7 +352,7 @@ const TextTrail: React.FC<TextTrailProps> = ({
     supersample,
   ]);
 
-  return <div ref={ref} className="w-full h-full" />;
+  return <div ref={ref} className="w-full h-full" style={{ background: 'transparent' }} />;
 };
 
 export default TextTrail;
