@@ -1,67 +1,50 @@
 import React from 'react';
-import { Quote } from './Quote';
-import { Section } from './Section';
-import TextTrail from './TextTrail';
 
 export const HomePage = () => {
   return (
     <>
       {/* Hero Section */}
-      <Section className="from-purple-700 pt-20" id="home">
+      <section className="min-h-screen flex items-center justify-center relative from-purple-700 pt-20" id="home">
         <div className="text-center">
-          <div className="h-48 md:h-64 mb-8 w-full">
-            <TextTrail 
-              text="BAMBOY"
-              fontFamily="system-ui"
-              fontWeight="900"
-              noiseFactor={2.0}
-              noiseScale={0.003}
-              rgbPersistFactor={0.9}
-              alphaPersistFactor={0.85}
-              animateColor={true}
-              startColor="#ffffff"
-              textColor="#ffffff"
-              backgroundColor={0x000000}
-              colorCycleInterval={1500}
-              supersample={2}
-            />
+          <div className="h-48 md:h-64 mb-8 w-full flex items-center justify-center">
+            <h1 className="text-6xl md:text-8xl font-bold text-white">BAMBOY</h1>
           </div>
-          <Quote
-            text="In a world of ones and zeros, be the glitch that makes people smile."
-            author="Digital Philosopher"
-          />
+          <blockquote className="text-xl md:text-2xl text-white/90 font-light italic max-w-4xl mx-auto px-4">
+            "In a world of ones and zeros, be the glitch that makes people smile."
+            <footer className="mt-4 text-sm text-white/70">— Digital Philosopher</footer>
+          </blockquote>
         </div>
-      </Section>
+      </section>
 
       {/* About Section */}
-      <Section id="about">
+      <section className="min-h-screen flex items-center justify-center relative" id="about">
         <div className="text-center">
-          <Quote
-            text="They said AI would take over the world. Plot twist: It just wants to play with bubbles."
-            author="Tech Optimist"
-          />
+          <blockquote className="text-xl md:text-2xl text-white/90 font-light italic max-w-4xl mx-auto px-4">
+            "They said AI would take over the world. Plot twist: It just wants to play with bubbles."
+            <footer className="mt-4 text-sm text-white/70">— Tech Optimist</footer>
+          </blockquote>
         </div>
-      </Section>
+      </section>
 
       {/* Services Section */}
-      <Section id="services">
+      <section className="min-h-screen flex items-center justify-center relative" id="services">
         <div className="text-center">
-          <Quote
-            text="The best code is the one that brings joy. The second best is the one that works."
-            author="Happy Developer"
-          />
+          <blockquote className="text-xl md:text-2xl text-white/90 font-light italic max-w-4xl mx-auto px-4">
+            "The best code is the one that brings joy. The second best is the one that works."
+            <footer className="mt-4 text-sm text-white/70">— Happy Developer</footer>
+          </blockquote>
         </div>
-      </Section>
+      </section>
 
       {/* Contact/Future Section */}
-      <Section id="contact">
+      <section className="min-h-screen flex items-center justify-center relative" id="contact">
         <div className="text-center">
-          <Quote
-            text="In the future, websites won't just be visited. They'll be experienced."
-            author="Digital Explorer"
-          />
+          <blockquote className="text-xl md:text-2xl text-white/90 font-light italic max-w-4xl mx-auto px-4">
+            "In the future, websites won't just be visited. They'll be experienced."
+            <footer className="mt-4 text-sm text-white/70">— Digital Explorer</footer>
+          </blockquote>
         </div>
-      </Section>
+      </section>
     </>
   );
 };
