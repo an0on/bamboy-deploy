@@ -6,22 +6,49 @@ export const HomePage = () => {
     <>
       {/* Hero Section */}
       <section className="min-h-screen flex flex-col items-center justify-center relative from-purple-700 pt-20" id="home">
-        <div className="text-center max-w-4xl mx-auto px-4">
-          <div style={{ width: '80%', margin: '0 auto 2rem auto', height: '200px' }}>
-            <TextPressure
-              text="BAMBOY"
-              flex={true}
-              alpha={false}
-              stroke={false}
-              width={true}
-              weight={true}
-              italic={true}
-              textColor="#ffffff"
-              strokeColor="#ff0000"
-              minFontSize={36}
-            />
+        {/* Extended mouse detection area covering full section */}
+        <div className="absolute inset-0 w-full h-full">
+          <div className="flex flex-col items-center h-full justify-center">
+            <div style={{ 
+              width: '90%', 
+              maxWidth: '900px', 
+              height: '20vh', 
+              minHeight: '120px',
+              maxHeight: '200px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              position: 'relative'
+            }}>
+              <TextPressure
+                text="BAMBOY"
+                flex={true}
+                alpha={false}
+                stroke={false}
+                width={true}
+                weight={true}
+                italic={true}
+                textColor="#ffffff"
+                strokeColor="#ff0000"
+                minFontSize={32}
+                scale={true}
+              />
+            </div>
           </div>
-          <blockquote className="text-xl md:text-2xl text-white/90 font-light italic">
+        </div>
+        
+        {/* Content positioned above TextPressure */}
+        <div className="text-center max-w-4xl mx-auto px-4 relative z-10 pointer-events-none">
+          <div style={{ 
+            width: '90%', 
+            margin: '0 auto 2rem auto', 
+            height: '20vh',
+            minHeight: '120px',
+            maxHeight: '200px'
+          }}>
+            {/* Space for BAMBOY text */}
+          </div>
+          <blockquote className="text-xl md:text-2xl text-white/90 font-light italic pointer-events-auto">
             "In a world of ones and zeros, be the glitch that makes people smile."
             <footer className="mt-4 text-sm text-white/70">— Digital Philosopher</footer>
           </blockquote>

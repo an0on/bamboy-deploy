@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 
 interface TextPressureProps {
     text?: string;
@@ -43,7 +43,6 @@ const TextPressure: React.FC<TextPressureProps> = ({
     const cursorRef = useRef({ x: 0, y: 0 });
 
     const [fontSize, setFontSize] = useState(minFontSize);
-    const [scaleY, setScaleY] = useState(1);
     const [lineHeight, setLineHeight] = useState(1);
 
     const chars = text.split('');
@@ -82,35 +81,33 @@ const TextPressure: React.FC<TextPressureProps> = ({
         };
     }, []);
 
-    const setSize = () => {
+    const setSize = useCallback(() => {
         if (!containerRef.current || !titleRef.current) return;
 
         const { width: containerW, height: containerH } = containerRef.current.getBoundingClientRect();
 
-        let newFontSize = containerW / (chars.length / 2);
+        // Calculate font size based on width constraint
+        const widthBasedFontSize = containerW / (chars.length * 0.6); // 0.6 is approximate character width ratio
+        
+        // Calculate font size based on height constraint  
+        const heightBasedFontSize = containerH * 0.8; // 0.8 provides padding and prevents overflow
+        
+        // Use the smaller of the two to ensure text fits in both dimensions
+        let newFontSize = Math.min(widthBasedFontSize, heightBasedFontSize);
         newFontSize = Math.max(newFontSize, minFontSize);
 
         setFontSize(newFontSize);
-        setScaleY(1);
-        setLineHeight(1);
+        setLineHeight(0.9); // Slightly reduce line height for better vertical centering
 
-        requestAnimationFrame(() => {
-            if (!titleRef.current) return;
-            const textRect = titleRef.current.getBoundingClientRect();
-
-            if (scale && textRect.height > 0) {
-                const yRatio = containerH / textRect.height;
-                setScaleY(yRatio);
-                setLineHeight(yRatio);
-            }
-        });
-    };
+        // Remove problematic post-sizing scaling that causes overflow
+        // The font size calculation above already ensures proper fitting
+    }, [chars.length, minFontSize]);
 
     useEffect(() => {
         setSize();
         window.addEventListener('resize', setSize);
         return () => window.removeEventListener('resize', setSize);
-    }, [scale, text]);
+    }, [scale, text, setSize]);
 
     useEffect(() => {
         let rafId: number;
@@ -158,7 +155,7 @@ const TextPressure: React.FC<TextPressureProps> = ({
     return (
         <div
             ref={containerRef}
-            className="relative w-full h-full overflow-hidden bg-transparent"
+            className="relative w-full h-full overflow-hidden bg-transparent flex items-center justify-center"
         >
             <style>{`
         @font-face {
@@ -190,11 +187,11 @@ const TextPressure: React.FC<TextPressureProps> = ({
                     fontFamily,
                     fontSize: fontSize,
                     lineHeight,
-                    transform: `scale(1, ${scaleY})`,
-                    transformOrigin: 'center top',
                     margin: 0,
                     fontWeight: 100,
                     color: stroke ? undefined : textColor,
+                    maxWidth: '100%',
+                    maxHeight: '100%',
                 }}
             >
                 {chars.map((char, i) => (
