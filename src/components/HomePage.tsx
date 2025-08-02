@@ -1,11 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import TextPressure from './TextPressure';
+import { useMouseGradient } from '../hooks/useMouseGradient';
 
 export const HomePage = () => {
+  // Initialize animated background for hero section
+  useMouseGradient('hero-section');
+
   return (
     <>
-      {/* Original BAMBOY Hero Section */}
-      <section className="min-h-screen flex flex-col items-center justify-center relative from-purple-700 pt-20" id="home">
+      {/* Hero Section with Animated Background */}
+      <section 
+        className="min-h-screen flex flex-col items-center justify-center relative from-purple-700 pt-20" 
+        id="home"
+      >
+        {/* Animated cursor-following gradient overlay */}
+        <div 
+          id="hero-section"
+          className="absolute inset-0 w-full h-full pointer-events-none"
+          style={{
+            background: `radial-gradient(
+              600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+              rgba(255, 255, 255, 0.12) 0%,
+              rgba(255, 255, 255, 0.06) 25%,
+              rgba(255, 255, 255, 0.02) 50%,
+              transparent 70%
+            )`
+          }}
+        />
         {/* Extended mouse detection area covering full section */}
         <div className="absolute inset-0 w-full h-full">
           <div className="flex flex-col items-center h-full justify-center">
