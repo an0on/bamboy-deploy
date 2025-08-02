@@ -58,61 +58,61 @@ export const HomePage = () => {
             "In a w
             <span className="inline-block relative" style={{ width: '0.9em', height: '0.9em', marginTop: '-0.05em', verticalAlign: 'middle' }}>
               <ShapeBlur
-                variation={1}
+                variation={2}
                 pixelRatioProp={window.devicePixelRatio || 1}
                 shapeSize={0.8}
                 roundness={0.5}
                 borderSize={0.05}
-                circleSize={0.5}
-                circleEdge={1}
+                circleSize={0.45}
+                circleEdge={0.01}
               />
             </span>
             rld 
             <span className="inline-block relative" style={{ width: '0.9em', height: '0.9em', marginTop: '-0.05em', verticalAlign: 'middle' }}>
               <ShapeBlur
-                variation={1}
+                variation={2}
                 pixelRatioProp={window.devicePixelRatio || 1}
                 shapeSize={0.8}
                 roundness={0.5}
                 borderSize={0.05}
-                circleSize={0.5}
-                circleEdge={1}
+                circleSize={0.45}
+                circleEdge={0.01}
               />
             </span>
             f 
             <span className="inline-block relative" style={{ width: '0.9em', height: '0.9em', marginTop: '-0.05em', verticalAlign: 'middle' }}>
               <ShapeBlur
-                variation={1}
+                variation={2}
                 pixelRatioProp={window.devicePixelRatio || 1}
                 shapeSize={0.8}
                 roundness={0.5}
                 borderSize={0.05}
-                circleSize={0.5}
-                circleEdge={1}
+                circleSize={0.45}
+                circleEdge={0.01}
               />
             </span>
             nes and zer
             <span className="inline-block relative" style={{ width: '0.9em', height: '0.9em', marginTop: '-0.05em', verticalAlign: 'middle' }}>
               <ShapeBlur
-                variation={1}
+                variation={2}
                 pixelRatioProp={window.devicePixelRatio || 1}
                 shapeSize={0.8}
                 roundness={0.5}
                 borderSize={0.05}
-                circleSize={0.5}
-                circleEdge={1}
+                circleSize={0.45}
+                circleEdge={0.01}
               />
             </span>
             s, be the glitch that makes pe
             <span className="inline-block relative" style={{ width: '0.9em', height: '0.9em', marginTop: '-0.05em', verticalAlign: 'middle' }}>
               <ShapeBlur
-                variation={1}
+                variation={2}
                 pixelRatioProp={window.devicePixelRatio || 1}
                 shapeSize={0.8}
                 roundness={0.5}
                 borderSize={0.05}
-                circleSize={0.5}
-                circleEdge={1}
+                circleSize={0.45}
+                circleEdge={0.01}
               />
             </span>
             ple smile."
