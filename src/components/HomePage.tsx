@@ -69,18 +69,16 @@ export const HomePage = () => {
               style={{ fontFamily: 'inherit', fontSize: 'inherit', fontWeight: 'inherit', color: 'inherit' }}
             />
             {' '}
-            <span style={{ display: 'inline-block' }}>
-              <FuzzyText 
-                baseIntensity={0.2} 
-                hoverIntensity={0.5} 
-                enableHover={true}
-                fontSize="inherit"
-                fontFamily="inherit"
-                color="#fff"
-              >
-                glitch
-              </FuzzyText>
-            </span>
+            <FuzzyText 
+              baseIntensity={0.2} 
+              hoverIntensity={0.5} 
+              enableHover={true}
+              fontSize="inherit"
+              fontFamily="inherit"
+              color="#fff"
+            >
+              glitch
+            </FuzzyText>
             {' '}
             <VariableProximity
               label="that makes people smile."
