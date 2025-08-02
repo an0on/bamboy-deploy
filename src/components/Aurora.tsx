@@ -85,6 +85,12 @@ struct ColorStop {
 void main() {
   vec2 uv = gl_FragCoord.xy / uResolution;
   
+  // Stretch vertically on mobile for better aspect ratio
+  float aspectRatio = uResolution.x / uResolution.y;
+  if (aspectRatio < 1.0) {
+    uv.y *= 0.6; // Stretch vertically on mobile
+  }
+  
   ColorStop colors[3];
   colors[0] = ColorStop(uColorStops[0], 0.0);
   colors[1] = ColorStop(uColorStops[1], 0.5);
@@ -103,7 +109,8 @@ void main() {
   
   vec3 auroraColor = intensity * rampColor;
   
-  fragColor = vec4(auroraColor * auroraAlpha, auroraAlpha);
+  // Use additive blending instead of alpha blending
+  fragColor = vec4(auroraColor * auroraAlpha, 1.0);
 }
 `;
 
@@ -138,7 +145,7 @@ export default function Aurora(props: AuroraProps) {
     const gl = renderer.gl;
     gl.clearColor(0, 0, 0, 0);
     gl.enable(gl.BLEND);
-    gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+    gl.blendFunc(gl.ONE, gl.ONE);
     gl.canvas.style.backgroundColor = "transparent";
 
     let program: Program | undefined;

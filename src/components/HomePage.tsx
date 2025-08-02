@@ -11,12 +11,12 @@ export const HomePage = () => {
   return (
     <>
       {/* Aurora Background Effect */}
-      <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-0">
+      <div className="fixed top-0 left-0 w-full h-1/2 md:h-1/2 pointer-events-none z-0">
         <Aurora
           colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
-          blend={0.5}
-          amplitude={1.0}
-          speed={0.5}
+          blend={0.3}
+          amplitude={0.5}
+          speed={0.2}
         />
       </div>
       
