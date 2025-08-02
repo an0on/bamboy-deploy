@@ -1519,7 +1519,7 @@ export default function SplashCursor({
         className="w-full h-full block"
         style={{ 
           mixBlendMode: 'screen',
-          opacity: 0.6
+          opacity: 0.8
         }}
       />
     </div>
