@@ -3,6 +3,8 @@ import TextPressure from './TextPressure';
 import SplashCursor from './SplashCursor';
 import VariableProximity from './VariableProximity';
 import Aurora from './Aurora';
+import DecryptedText from './DecryptedText';
+import Magnet from './Magnet';
 
 export const HomePage = () => {
   const containerRef = useRef(null);
@@ -15,9 +17,9 @@ export const HomePage = () => {
       {/* Hero Section */}
       <section className="min-h-screen flex flex-col items-center justify-center relative from-purple-700 pt-20" id="home">
         {/* Aurora Background Effect - scrolls with content */}
-        <div className="absolute top-0 left-0 w-full h-1/2 md:h-1/2 pointer-events-none z-[1]">
+        <div className="absolute -top-20 left-0 w-full h-96 md:h-96 pointer-events-none z-[1]">
           <Aurora
-            colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
+            colorStops={["#0F7000", "#F3A639", "#7CFF00"]}
             blend={0.3}
             amplitude={0.5}
             speed={0.2}
@@ -67,9 +69,9 @@ export const HomePage = () => {
             {/* Space for BAMBOY text */}
           </div>
           <blockquote className="text-xl md:text-2xl text-white/90 font-light italic pointer-events-auto">
-            "
+            "In a world of{' '}
             <VariableProximity
-              label="In a world of ones and zeros, be the glitch that makes people smile."
+              label="ones"
               fromFontVariationSettings="'wght' 300, 'opsz' 9"
               toFontVariationSettings="'wght' 900, 'opsz' 40"
               containerRef={containerRef}
@@ -77,8 +79,41 @@ export const HomePage = () => {
               falloff="linear"
               style={{ fontFamily: 'inherit', fontSize: 'inherit', fontWeight: 'inherit', color: 'inherit' }}
             />
-            "
-            <footer className="mt-4 text-sm text-white/70">— Digital Philosopher</footer>
+            {' '}and{' '}
+            <DecryptedText 
+              text="zeros"
+              speed={100}
+              maxIterations={15}
+              animateOn="hover"
+              className="inline"
+              style={{ fontFamily: 'inherit', fontSize: 'inherit', fontWeight: 'inherit', color: 'inherit' }}
+            />
+            , be the{' '}
+            <DecryptedText 
+              text="glitch"
+              speed={80}
+              maxIterations={20}
+              animateOn="hover"
+              className="inline"
+              style={{ fontFamily: 'inherit', fontSize: 'inherit', fontWeight: 'inherit', color: 'inherit' }}
+            />
+            {' '}that makes people{' '}
+            <VariableProximity
+              label="smile"
+              fromFontVariationSettings="'wght' 300, 'opsz' 9"
+              toFontVariationSettings="'wght' 900, 'opsz' 40"
+              containerRef={containerRef}
+              radius={100}
+              falloff="linear"
+              style={{ fontFamily: 'inherit', fontSize: 'inherit', fontWeight: 'inherit', color: 'inherit' }}
+            />
+            ."
+            <footer className="mt-4 text-sm text-white/70">
+              —{' '}
+              <Magnet padding={50} disabled={false} magnetStrength={50}>
+                <span>Digital Philosopher</span>
+              </Magnet>
+            </footer>
           </blockquote>
         </div>
       </section>
