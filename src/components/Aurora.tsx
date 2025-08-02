@@ -109,8 +109,8 @@ void main() {
   
   vec3 auroraColor = intensity * rampColor;
   
-  // Use additive blending instead of alpha blending
-  fragColor = vec4(auroraColor * auroraAlpha, 1.0);
+  // Use proper alpha blending for transparency
+  fragColor = vec4(auroraColor * auroraAlpha, auroraAlpha);
 }
 `;
 
@@ -145,7 +145,7 @@ export default function Aurora(props: AuroraProps) {
     const gl = renderer.gl;
     gl.clearColor(0, 0, 0, 0);
     gl.enable(gl.BLEND);
-    gl.blendFunc(gl.ONE, gl.ONE);
+    gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
     gl.canvas.style.backgroundColor = "transparent";
 
     let program: Program | undefined;

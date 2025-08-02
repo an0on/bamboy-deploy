@@ -11,7 +11,7 @@ export const HomePage = () => {
   return (
     <>
       {/* Aurora Background Effect */}
-      <div className="fixed top-0 left-0 w-full h-1/2 md:h-1/2 pointer-events-none z-0">
+      <div className="fixed top-0 left-0 w-full h-1/2 md:h-1/2 pointer-events-none z-[1]">
         <Aurora
           colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
           blend={0.3}
@@ -84,7 +84,8 @@ export const HomePage = () => {
               baseIntensity={0.2} 
               hoverIntensity={0.5} 
               enableHover={true}
-              fontSize="clamp(1.25rem, 4vw, 1.5rem)"
+              fontSize="clamp(1.25rem, 5vw, 1.75rem)"
+              fontWeight={300}
               fontFamily="inherit"
               color="#fff"
             >

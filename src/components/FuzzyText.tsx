@@ -204,7 +204,7 @@ const FuzzyText: React.FC<FuzzyTextProps> = ({
     hoverIntensity,
   ]);
 
-  return <canvas ref={canvasRef} style={{ display: 'inline-block', verticalAlign: 'baseline' }} />;
+  return <canvas ref={canvasRef} style={{ display: 'inline-block', verticalAlign: 'text-bottom' }} />;
 };
 
 export default FuzzyText;
