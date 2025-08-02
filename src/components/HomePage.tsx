@@ -4,7 +4,7 @@ import TextPressure from './TextPressure';
 export const HomePage = () => {
   return (
     <>
-      {/* Hero Section */}
+      {/* Original BAMBOY Hero Section */}
       <section className="min-h-screen flex flex-col items-center justify-center relative from-purple-700 pt-20" id="home">
         {/* Extended mouse detection area covering full section */}
         <div className="absolute inset-0 w-full h-full">
@@ -55,6 +55,7 @@ export const HomePage = () => {
           </blockquote>
         </div>
       </section>
+
 
       {/* About Section */}
       <section className="min-h-screen flex items-center justify-center relative" id="about">
