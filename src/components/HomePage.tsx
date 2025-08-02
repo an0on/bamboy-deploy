@@ -4,12 +4,12 @@ export const HomePage = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center relative from-purple-700 pt-20" id="home">
-        <div className="text-center">
-          <div className="h-48 md:h-64 mb-8 w-full flex items-center justify-center">
-            <h1 className="text-6xl md:text-8xl font-bold text-white">BAMBOY</h1>
-          </div>
-          <blockquote className="text-xl md:text-2xl text-white/90 font-light italic max-w-4xl mx-auto px-4">
+      <section className="min-h-screen flex flex-col items-center justify-center relative from-purple-700 pt-20" id="home">
+        <div className="text-center max-w-4xl mx-auto px-4">
+          <h1 className="text-6xl md:text-8xl font-bold text-white mb-8" style={{ width: '80%', margin: '0 auto 2rem auto' }}>
+            BAMBOY
+          </h1>
+          <blockquote className="text-xl md:text-2xl text-white/90 font-light italic">
             "In a world of ones and zeros, be the glitch that makes people smile."
             <footer className="mt-4 text-sm text-white/70">— Digital Philosopher</footer>
           </blockquote>
