@@ -3,12 +3,23 @@ import TextPressure from './TextPressure';
 import SplashCursor from './SplashCursor';
 import FuzzyText from './FuzzyText';
 import VariableProximity from './VariableProximity';
+import Aurora from './Aurora';
 
 export const HomePage = () => {
   const containerRef = useRef(null);
 
   return (
     <>
+      {/* Aurora Background Effect */}
+      <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-0">
+        <Aurora
+          colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
+          blend={0.5}
+          amplitude={1.0}
+          speed={0.5}
+        />
+      </div>
+      
       {/* Fluid Splash Effect - Full Screen Overlay */}
       <SplashCursor />
       
@@ -73,7 +84,7 @@ export const HomePage = () => {
               baseIntensity={0.2} 
               hoverIntensity={0.5} 
               enableHover={true}
-              fontSize="inherit"
+              fontSize="clamp(1.25rem, 4vw, 1.5rem)"
               fontFamily="inherit"
               color="#fff"
             >
