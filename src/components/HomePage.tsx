@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import TextPressure from './TextPressure';
 import SplashCursor from './SplashCursor';
-import ShapeBlur from './ShapeBlur';
+import FuzzyText from './FuzzyText';
+import VariableProximity from './VariableProximity';
 
 export const HomePage = () => {
+  const containerRef = useRef(null);
+
   return (
     <>
       {/* Fluid Splash Effect - Full Screen Overlay */}
@@ -44,7 +47,7 @@ export const HomePage = () => {
         </div>
         
         {/* Content positioned above TextPressure */}
-        <div className="text-center max-w-4xl mx-auto px-4 relative z-10 pointer-events-none">
+        <div ref={containerRef} className="text-center max-w-4xl mx-auto px-4 relative z-10 pointer-events-none" style={{position: 'relative'}}>
           <div style={{ 
             width: '90%', 
             margin: '0 auto 2rem auto', 
@@ -55,67 +58,40 @@ export const HomePage = () => {
             {/* Space for BAMBOY text */}
           </div>
           <blockquote className="text-xl md:text-2xl text-white/90 font-light italic pointer-events-auto">
-            "In a w
-            <span className="inline-block relative" style={{ width: '0.9em', height: '0.9em', marginTop: '-0.05em', verticalAlign: 'middle' }}>
-              <ShapeBlur
-                variation={2}
-                pixelRatioProp={window.devicePixelRatio || 1}
-                shapeSize={0.8}
-                roundness={0.5}
-                borderSize={0.05}
-                circleSize={0.45}
-                circleEdge={0.01}
-              />
+            "
+            <VariableProximity
+              label="In a world of ones and zeros, be the"
+              fromFontVariationSettings="'wght' 300, 'opsz' 9"
+              toFontVariationSettings="'wght' 900, 'opsz' 40"
+              containerRef={containerRef}
+              radius={100}
+              falloff="linear"
+              style={{ fontFamily: 'inherit', fontSize: 'inherit', fontWeight: 'inherit', color: 'inherit' }}
+            />
+            {' '}
+            <span style={{ display: 'inline-block' }}>
+              <FuzzyText 
+                baseIntensity={0.2} 
+                hoverIntensity={0.5} 
+                enableHover={true}
+                fontSize="inherit"
+                fontFamily="inherit"
+                color="#fff"
+              >
+                glitch
+              </FuzzyText>
             </span>
-            rld 
-            <span className="inline-block relative" style={{ width: '0.9em', height: '0.9em', marginTop: '-0.05em', verticalAlign: 'middle' }}>
-              <ShapeBlur
-                variation={2}
-                pixelRatioProp={window.devicePixelRatio || 1}
-                shapeSize={0.8}
-                roundness={0.5}
-                borderSize={0.05}
-                circleSize={0.45}
-                circleEdge={0.01}
-              />
-            </span>
-            f 
-            <span className="inline-block relative" style={{ width: '0.9em', height: '0.9em', marginTop: '-0.05em', verticalAlign: 'middle' }}>
-              <ShapeBlur
-                variation={2}
-                pixelRatioProp={window.devicePixelRatio || 1}
-                shapeSize={0.8}
-                roundness={0.5}
-                borderSize={0.05}
-                circleSize={0.45}
-                circleEdge={0.01}
-              />
-            </span>
-            nes and zer
-            <span className="inline-block relative" style={{ width: '0.9em', height: '0.9em', marginTop: '-0.05em', verticalAlign: 'middle' }}>
-              <ShapeBlur
-                variation={2}
-                pixelRatioProp={window.devicePixelRatio || 1}
-                shapeSize={0.8}
-                roundness={0.5}
-                borderSize={0.05}
-                circleSize={0.45}
-                circleEdge={0.01}
-              />
-            </span>
-            s, be the glitch that makes pe
-            <span className="inline-block relative" style={{ width: '0.9em', height: '0.9em', marginTop: '-0.05em', verticalAlign: 'middle' }}>
-              <ShapeBlur
-                variation={2}
-                pixelRatioProp={window.devicePixelRatio || 1}
-                shapeSize={0.8}
-                roundness={0.5}
-                borderSize={0.05}
-                circleSize={0.45}
-                circleEdge={0.01}
-              />
-            </span>
-            ple smile."
+            {' '}
+            <VariableProximity
+              label="that makes people smile."
+              fromFontVariationSettings="'wght' 300, 'opsz' 9"
+              toFontVariationSettings="'wght' 900, 'opsz' 40"
+              containerRef={containerRef}
+              radius={100}
+              falloff="linear"
+              style={{ fontFamily: 'inherit', fontSize: 'inherit', fontWeight: 'inherit', color: 'inherit' }}
+            />
+            "
             <footer className="mt-4 text-sm text-white/70">— Digital Philosopher</footer>
           </blockquote>
         </div>
