@@ -32,6 +32,7 @@ export const HomePage = () => {
                 strokeColor="#ff0000"
                 minFontSize={32}
                 scale={true}
+                extendedDetectionArea={true}
               />
             </div>
           </div>

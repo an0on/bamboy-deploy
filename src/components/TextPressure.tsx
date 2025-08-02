@@ -16,6 +16,7 @@ interface TextPressureProps {
     strokeWidth?: number;
     className?: string;
     minFontSize?: number;
+    extendedDetectionArea?: boolean;
 }
 
 const TextPressure: React.FC<TextPressureProps> = ({
@@ -34,6 +35,7 @@ const TextPressure: React.FC<TextPressureProps> = ({
     strokeWidth = 2,
     className = '',
     minFontSize = 24,
+    extendedDetectionArea = false,
 }) => {
     const containerRef = useRef<HTMLDivElement | null>(null);
     const titleRef = useRef<HTMLHeadingElement | null>(null);
@@ -55,22 +57,87 @@ const TextPressure: React.FC<TextPressureProps> = ({
 
     useEffect(() => {
         const handleMouseMove = (e: MouseEvent) => {
-            cursorRef.current.x = e.clientX;
-            cursorRef.current.y = e.clientY;
+            if (extendedDetectionArea) {
+                // When extended detection is enabled, check if mouse is within the section
+                const sectionElement = containerRef.current?.closest('section');
+                if (sectionElement) {
+                    const sectionRect = sectionElement.getBoundingClientRect();
+                    // Check if mouse is within the section bounds (both X and Y)
+                    if (e.clientX >= sectionRect.left && 
+                        e.clientX <= sectionRect.right && 
+                        e.clientY >= sectionRect.top && 
+                        e.clientY <= sectionRect.bottom) {
+                        // Mouse is within the section - update cursor position
+                        cursorRef.current.x = e.clientX;
+                        cursorRef.current.y = e.clientY;
+                    }
+                    // Note: We don't update cursor position if mouse is outside section
+                    // This keeps the last known position and maintains the effect
+                } else {
+                    // Fallback to normal mouse tracking if section not found
+                    cursorRef.current.x = e.clientX;
+                    cursorRef.current.y = e.clientY;
+                }
+            } else {
+                // Normal mode - always update cursor position
+                cursorRef.current.x = e.clientX;
+                cursorRef.current.y = e.clientY;
+            }
         };
+        
         const handleTouchMove = (e: TouchEvent) => {
             const t = e.touches[0];
-            cursorRef.current.x = t.clientX;
-            cursorRef.current.y = t.clientY;
+            if (extendedDetectionArea) {
+                // When extended detection is enabled, check if touch is within the section
+                const sectionElement = containerRef.current?.closest('section');
+                if (sectionElement) {
+                    const sectionRect = sectionElement.getBoundingClientRect();
+                    // Check if touch is within the section bounds (both X and Y)
+                    if (t.clientX >= sectionRect.left && 
+                        t.clientX <= sectionRect.right && 
+                        t.clientY >= sectionRect.top && 
+                        t.clientY <= sectionRect.bottom) {
+                        // Touch is within the section - update cursor position
+                        cursorRef.current.x = t.clientX;
+                        cursorRef.current.y = t.clientY;
+                    }
+                    // Note: We don't update cursor position if touch is outside section
+                } else {
+                    // Fallback to normal touch tracking if section not found
+                    cursorRef.current.x = t.clientX;
+                    cursorRef.current.y = t.clientY;
+                }
+            } else {
+                // Normal mode - always update cursor position
+                cursorRef.current.x = t.clientX;
+                cursorRef.current.y = t.clientY;
+            }
         };
 
         window.addEventListener('mousemove', handleMouseMove);
         window.addEventListener('touchmove', handleTouchMove, { passive: false });
 
+        // Initialize mouse position
         if (containerRef.current) {
-            const { left, top, width, height } = containerRef.current.getBoundingClientRect();
-            mouseRef.current.x = left + width / 2;
-            mouseRef.current.y = top + height / 2;
+            if (extendedDetectionArea) {
+                // For extended detection, initialize to center of the section
+                const sectionElement = containerRef.current.closest('section');
+                if (sectionElement) {
+                    const sectionRect = sectionElement.getBoundingClientRect();
+                    mouseRef.current.x = sectionRect.left + sectionRect.width / 2;
+                    mouseRef.current.y = sectionRect.top + sectionRect.height / 2;
+                } else {
+                    // Fallback to container center
+                    const { left, top, width, height } = containerRef.current.getBoundingClientRect();
+                    mouseRef.current.x = left + width / 2;
+                    mouseRef.current.y = top + height / 2;
+                }
+            } else {
+                // Normal mode - use container center
+                const { left, top, width, height } = containerRef.current.getBoundingClientRect();
+                mouseRef.current.x = left + width / 2;
+                mouseRef.current.y = top + height / 2;
+            }
             cursorRef.current.x = mouseRef.current.x;
             cursorRef.current.y = mouseRef.current.y;
         }
@@ -79,7 +146,7 @@ const TextPressure: React.FC<TextPressureProps> = ({
             window.removeEventListener('mousemove', handleMouseMove);
             window.removeEventListener('touchmove', handleTouchMove);
         };
-    }, []);
+    }, [extendedDetectionArea]);
 
     const setSize = useCallback(() => {
         if (!containerRef.current || !titleRef.current) return;
@@ -117,7 +184,19 @@ const TextPressure: React.FC<TextPressureProps> = ({
 
             if (titleRef.current) {
                 const titleRect = titleRef.current.getBoundingClientRect();
-                const maxDist = titleRect.width / 2;
+                
+                // Calculate effect radius based on detection area mode
+                let maxDist = titleRect.width / 2; // Default: small radius around text
+                
+                if (extendedDetectionArea && containerRef.current) {
+                    // Extended mode: use section dimensions for much larger effect radius
+                    const sectionElement = containerRef.current.closest('section');
+                    if (sectionElement) {
+                        const sectionRect = sectionElement.getBoundingClientRect();
+                        // Use the larger dimension to ensure effect covers entire section
+                        maxDist = Math.max(sectionRect.width, sectionRect.height) / 2;
+                    }
+                }
 
                 spansRef.current.forEach((span) => {
                     if (!span) return;
@@ -150,7 +229,7 @@ const TextPressure: React.FC<TextPressureProps> = ({
 
         animate();
         return () => cancelAnimationFrame(rafId);
-    }, [width, weight, italic, alpha, chars.length]);
+    }, [width, weight, italic, alpha, chars.length, extendedDetectionArea]);
 
     return (
         <div
