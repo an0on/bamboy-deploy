@@ -4,6 +4,7 @@ import SplashCursor from './SplashCursor';
 import VariableProximity from './VariableProximity';
 import DecryptedText from './DecryptedText';
 import Magnet from './Magnet';
+import Orb from './Orb';
 
 export const HomePage = () => {
   const containerRef = useRef(null);
@@ -88,9 +89,8 @@ export const HomePage = () => {
             />
             "
             <footer className="mt-4 text-sm text-white/70">
-              —{' '}
               <Magnet padding={230} disabled={false} magnetStrength={4}>
-                <span>Digital Philosopher</span>
+                <span>— Digital Philosopher</span>
               </Magnet>
             </footer>
           </blockquote>
@@ -100,11 +100,26 @@ export const HomePage = () => {
 
       {/* About Section */}
       <section className="min-h-screen flex items-center justify-center relative" id="about">
-        <div className="text-center">
-          <blockquote className="text-xl md:text-2xl text-white/90 font-light italic max-w-4xl mx-auto px-4">
-            "They said AI would take over the world. Plot twist: It just wants to play with bubbles."
-            <footer className="mt-4 text-sm text-white/70">— Tech Optimist</footer>
-          </blockquote>
+        <div className="relative w-full max-w-6xl mx-auto px-4">
+          {/* Orb Background */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div style={{ width: '100%', height: '600px', position: 'relative' }}>
+              <Orb
+                hoverIntensity={0.15}
+                rotateOnHover={true}
+                hue={130}
+                forceHoverState={false}
+              />
+            </div>
+          </div>
+          
+          {/* Text Content */}
+          <div className="relative z-10 text-center">
+            <blockquote className="text-xl md:text-2xl text-white/90 font-light italic max-w-4xl mx-auto">
+              "This orb is hiding something,<br />try hovering!"
+              <footer className="mt-4 text-sm text-white/70">— Tech Optimist</footer>
+            </blockquote>
+          </div>
         </div>
       </section>
 
