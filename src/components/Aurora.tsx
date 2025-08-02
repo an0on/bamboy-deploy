@@ -107,10 +107,14 @@ void main() {
   float midPoint = 0.20;
   float auroraAlpha = smoothstep(midPoint - uBlend * 0.5, midPoint + uBlend * 0.5, intensity);
   
+  // Softer fade from aurora colors to transparent
+  float fadeOut = smoothstep(0.8, 1.0, uv.y);
+  auroraAlpha *= (1.0 - fadeOut);
+  
   vec3 auroraColor = intensity * rampColor;
   
-  // Use proper alpha blending for transparency
-  fragColor = vec4(auroraColor * auroraAlpha, auroraAlpha);
+  // Softer blending with reduced intensity
+  fragColor = vec4(auroraColor * auroraAlpha * 0.6, auroraAlpha * 0.8);
 }
 `;
 

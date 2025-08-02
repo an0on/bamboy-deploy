@@ -1,7 +1,6 @@
 import React, { useRef } from 'react';
 import TextPressure from './TextPressure';
 import SplashCursor from './SplashCursor';
-import FuzzyText from './FuzzyText';
 import VariableProximity from './VariableProximity';
 import Aurora from './Aurora';
 
@@ -10,21 +9,20 @@ export const HomePage = () => {
 
   return (
     <>
-      {/* Aurora Background Effect */}
-      <div className="fixed top-0 left-0 w-full h-1/2 md:h-1/2 pointer-events-none z-[1]">
-        <Aurora
-          colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
-          blend={0.3}
-          amplitude={0.5}
-          speed={0.2}
-        />
-      </div>
-      
       {/* Fluid Splash Effect - Full Screen Overlay */}
       <SplashCursor />
       
       {/* Hero Section */}
       <section className="min-h-screen flex flex-col items-center justify-center relative from-purple-700 pt-20" id="home">
+        {/* Aurora Background Effect - scrolls with content */}
+        <div className="absolute top-0 left-0 w-full h-1/2 md:h-1/2 pointer-events-none z-[1]">
+          <Aurora
+            colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
+            blend={0.3}
+            amplitude={0.5}
+            speed={0.2}
+          />
+        </div>
         {/* Extended mouse detection area covering full section */}
         <div className="absolute inset-0 w-full h-full">
           <div className="flex flex-col items-center h-full justify-center">
@@ -71,29 +69,7 @@ export const HomePage = () => {
           <blockquote className="text-xl md:text-2xl text-white/90 font-light italic pointer-events-auto">
             "
             <VariableProximity
-              label="In a world of ones and zeros, be the"
-              fromFontVariationSettings="'wght' 300, 'opsz' 9"
-              toFontVariationSettings="'wght' 900, 'opsz' 40"
-              containerRef={containerRef}
-              radius={100}
-              falloff="linear"
-              style={{ fontFamily: 'inherit', fontSize: 'inherit', fontWeight: 'inherit', color: 'inherit' }}
-            />
-            {' '}
-            <FuzzyText 
-              baseIntensity={0.2} 
-              hoverIntensity={0.5} 
-              enableHover={true}
-              fontSize="clamp(1.25rem, 5vw, 1.75rem)"
-              fontWeight={300}
-              fontFamily="inherit"
-              color="#fff"
-            >
-              glitch
-            </FuzzyText>
-            {' '}
-            <VariableProximity
-              label="that makes people smile."
+              label="In a world of ones and zeros, be the glitch that makes people smile."
               fromFontVariationSettings="'wght' 300, 'opsz' 9"
               toFontVariationSettings="'wght' 900, 'opsz' 40"
               containerRef={containerRef}
