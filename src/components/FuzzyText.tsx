@@ -88,7 +88,7 @@ const FuzzyText: React.FC<FuzzyTextProps> = ({
       offCtx.fillStyle = color;
       offCtx.fillText(text, xOffset - actualLeft, actualAscent);
 
-      const horizontalMargin = 10;
+      const horizontalMargin = 20;
       const verticalMargin = 0;
       canvas.width = offscreenWidth + horizontalMargin * 2;
       canvas.height = tightHeight + verticalMargin * 2;
@@ -100,7 +100,7 @@ const FuzzyText: React.FC<FuzzyTextProps> = ({
       const interactiveBottom = interactiveTop + tightHeight;
 
       let isHovering = false;
-      const fuzzRange = 15;
+      const fuzzRange = 30;
 
       const run = () => {
         if (isCancelled) return;
