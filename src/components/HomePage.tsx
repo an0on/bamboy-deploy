@@ -18,13 +18,20 @@ export const HomePage = () => {
           id="hero-section"
           className="absolute inset-0 w-full h-full pointer-events-none"
           style={{
-            background: `radial-gradient(
-              600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-              rgba(255, 255, 255, 0.12) 0%,
-              rgba(255, 255, 255, 0.06) 25%,
-              rgba(255, 255, 255, 0.02) 50%,
-              transparent 70%
-            )`
+            background: `
+              radial-gradient(
+                400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                rgba(255, 255, 255, 0.3) 0%,
+                rgba(255, 255, 255, 0.1) 40%,
+                transparent 70%
+              ),
+              radial-gradient(
+                800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                rgba(255, 255, 255, 0.15) 0%,
+                rgba(255, 255, 255, 0.08) 30%,
+                rgba(255, 255, 255, 0.03) 60%,
+                transparent 85%
+              )`
           }}
         />
         {/* Extended mouse detection area covering full section */}
