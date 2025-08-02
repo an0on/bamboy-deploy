@@ -1,6 +1,7 @@
 import React from 'react';
 import TextPressure from './TextPressure';
 import SplashCursor from './SplashCursor';
+import ShapeBlur from './ShapeBlur';
 
 export const HomePage = () => {
   return (
@@ -54,7 +55,67 @@ export const HomePage = () => {
             {/* Space for BAMBOY text */}
           </div>
           <blockquote className="text-xl md:text-2xl text-white/90 font-light italic pointer-events-auto">
-            "In a world of ones and zeros, be the glitch that makes people smile."
+            "In a w
+            <span className="inline-block relative" style={{ width: '0.9em', height: '0.9em', marginTop: '-0.05em', verticalAlign: 'middle' }}>
+              <ShapeBlur
+                variation={1}
+                pixelRatioProp={window.devicePixelRatio || 1}
+                shapeSize={0.8}
+                roundness={0.5}
+                borderSize={0.05}
+                circleSize={0.5}
+                circleEdge={1}
+              />
+            </span>
+            rld 
+            <span className="inline-block relative" style={{ width: '0.9em', height: '0.9em', marginTop: '-0.05em', verticalAlign: 'middle' }}>
+              <ShapeBlur
+                variation={1}
+                pixelRatioProp={window.devicePixelRatio || 1}
+                shapeSize={0.8}
+                roundness={0.5}
+                borderSize={0.05}
+                circleSize={0.5}
+                circleEdge={1}
+              />
+            </span>
+            f 
+            <span className="inline-block relative" style={{ width: '0.9em', height: '0.9em', marginTop: '-0.05em', verticalAlign: 'middle' }}>
+              <ShapeBlur
+                variation={1}
+                pixelRatioProp={window.devicePixelRatio || 1}
+                shapeSize={0.8}
+                roundness={0.5}
+                borderSize={0.05}
+                circleSize={0.5}
+                circleEdge={1}
+              />
+            </span>
+            nes and zer
+            <span className="inline-block relative" style={{ width: '0.9em', height: '0.9em', marginTop: '-0.05em', verticalAlign: 'middle' }}>
+              <ShapeBlur
+                variation={1}
+                pixelRatioProp={window.devicePixelRatio || 1}
+                shapeSize={0.8}
+                roundness={0.5}
+                borderSize={0.05}
+                circleSize={0.5}
+                circleEdge={1}
+              />
+            </span>
+            s, be the glitch that makes pe
+            <span className="inline-block relative" style={{ width: '0.9em', height: '0.9em', marginTop: '-0.05em', verticalAlign: 'middle' }}>
+              <ShapeBlur
+                variation={1}
+                pixelRatioProp={window.devicePixelRatio || 1}
+                shapeSize={0.8}
+                roundness={0.5}
+                borderSize={0.05}
+                circleSize={0.5}
+                circleEdge={1}
+              />
+            </span>
+            ple smile."
             <footer className="mt-4 text-sm text-white/70">— Digital Philosopher</footer>
           </blockquote>
         </div>
