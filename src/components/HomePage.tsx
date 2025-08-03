@@ -129,7 +129,7 @@ export const HomePage = () => {
                       </span>
                     </Magnet>
                     <br />with bubbles."
-                    <footer className="mt-3 text-xs sm:text-sm text-white/70">— Tech Optimist</footer>
+                    <footer className="mt-4 text-xs sm:text-sm text-white/90 relative z-20">— Tech Optimist</footer>
                   </blockquote>
                 </div>
               </div>
