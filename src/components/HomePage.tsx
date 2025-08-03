@@ -116,7 +116,7 @@ export const HomePage = () => {
           {/* Text Content */}
           <div className="relative z-10 text-center">
             <blockquote className="text-xl md:text-2xl text-white/90 font-light italic max-w-4xl mx-auto">
-              "This orb is hiding something,<br />try hovering!"
+              "Sometimes the best ideas come when you<br />play with bubbles."
               <footer className="mt-4 text-sm text-white/70">— Tech Optimist</footer>
             </blockquote>
           </div>
