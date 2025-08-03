@@ -180,7 +180,7 @@ export const HomePage = () => {
               </a>
             </div>
             <p className="text-xs text-white/60">
-              © 2024 BAMBOY. Made with ❤️ and lots of ☕ • Crafted with passion for the digital future
+              © 2024 BAMBOY. Made with 💚 and lots of 🥦 in Germany
             </p>
           </div>
         </div>
