@@ -1,24 +1,8 @@
 import { motion } from 'framer-motion';
-import { ArrowLeft, Shield, Mail } from 'lucide-react';
-import { useState } from 'react';
+import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export const Impressum = () => {
-  const [showEmail, setShowEmail] = useState(false);
-  
-  // Email protection with simple encoding
-  const getEmail = () => {
-    const parts = ['kontakt', '@', 'bamboy', '.', 'de'];
-    return parts.join('');
-  };
-
-  const decodeEmail = () => {
-    // Simple ROT13-like encoding for email protection
-    const encoded = 'xbagnxg@onzobl.qr';
-    return encoded.replace(/[a-zA-Z]/g, function(c) {
-      return String.fromCharCode((c <= "Z" ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26);
-    });
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-700 via-blue-600 to-green-500 py-20">
@@ -46,7 +30,7 @@ export const Impressum = () => {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Impressum</h1>
-          <p className="text-white/70 text-lg">Angaben gemäß § 5 TMG</p>
+          <p className="text-white/70 text-lg">Angaben gemäß § 5 DDG und § 18 Abs. 2 MStV</p>
         </motion.div>
 
         {/* Content */}
@@ -57,168 +41,91 @@ export const Impressum = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <div className="space-y-8 text-white">
-            {/* Company Information */}
-            <section>
-              <h2 className="text-2xl font-semibold mb-4 flex items-center space-x-2">
-                <Shield className="text-blue-300" size={24} />
-                <span>Anbieter</span>
-              </h2>
-              <div className="bg-white/5 rounded-lg p-6 space-y-2">
-                <p><strong>Firmenname:</strong> BAMBOY</p>
-                <p><strong>Rechtsform:</strong> Einzelunternehmen</p>
-                <p><strong>Inhaber/Geschäftsführer:</strong> Niels Zimmermann</p>
-                <p><strong>Anschrift:</strong></p>
-                <div className="ml-4">
-                  <p>Musterstraße 123</p>
-                  <p>12345 Berlin</p>
-                  <p>Deutschland</p>
-                </div>
-              </div>
-            </section>
-
             {/* Contact Information */}
             <section>
-              <h2 className="text-2xl font-semibold mb-4 flex items-center space-x-2">
-                <Mail className="text-green-300" size={24} />
-                <span>Kontakt</span>
-              </h2>
-              <div className="bg-white/5 rounded-lg p-6 space-y-4">
-                <div>
-                  <strong>E-Mail:</strong>
-                  {!showEmail ? (
-                    <motion.button
-                      onClick={() => setShowEmail(true)}
-                      className="ml-2 px-3 py-1 bg-blue-500/20 hover:bg-blue-500/30 rounded border border-blue-400/30 transition-colors duration-300"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      E-Mail anzeigen
-                    </motion.button>
-                  ) : (
-                    <motion.span
-                      className="ml-2 text-blue-300"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      {decodeEmail()}
-                    </motion.span>
-                  )}
-                </div>
-                <p><strong>Telefon:</strong> +49 (0) 30 12345678</p>
-                <p className="text-white/70 text-sm">
-                  <em>Hinweis: Die E-Mail-Adresse wird aus Spam-Schutzgründen nur auf Anfrage angezeigt.</em>
-                </p>
+              <h2 className="text-2xl font-semibold mb-4">Verantwortlich für den Inhalt:</h2>
+              <div className="bg-white/5 rounded-lg p-6 space-y-2">
+                <p>Niels Zimmermann</p>
+                <p>Kennenburgerstr. 43</p>
+                <p>73732 Esslingen am Neckar</p>
+                <p>E-Mail: spielsuechtig@web.de</p>
               </div>
             </section>
 
-            {/* Legal Information */}
+            {/* Content Responsibility */}
             <section>
-              <h2 className="text-2xl font-semibold mb-4">Rechtliche Informationen</h2>
-              <div className="bg-white/5 rounded-lg p-6 space-y-4">
-                <div>
-                  <strong>Umsatzsteuer-ID:</strong>
-                  <p className="text-white/80">DE123456789 (Beispiel - bei Bedarf eintragen)</p>
-                </div>
-                <div>
-                  <strong>Wirtschafts-ID:</strong>
-                  <p className="text-white/80">12345678901 (Beispiel - bei Bedarf eintragen)</p>
-                </div>
-                <div>
-                  <strong>Handelsregister:</strong>
-                  <p className="text-white/80">Nicht eingetragen (Einzelunternehmen)</p>
-                </div>
+              <h2 className="text-2xl font-semibold mb-4">Inhaltlich verantwortlich gemäß § 18 Abs. 2 MStV:</h2>
+              <div className="bg-white/5 rounded-lg p-6">
+                <p>Niels Zimmermann, Anschrift wie oben</p>
               </div>
             </section>
 
-            {/* Professional Information */}
-            <section>
-              <h2 className="text-2xl font-semibold mb-4">Berufsrechtliche Regelungen</h2>
-              <div className="bg-white/5 rounded-lg p-6 space-y-4">
-                <p><strong>Berufsbezeichnung:</strong> [Berufsbezeichnung eintragen, falls zutreffend]</p>
-                <p><strong>Zuständige Kammer:</strong> [Kammer eintragen, falls zutreffend]</p>
-                <p><strong>Verliehen in:</strong> Deutschland</p>
-                <p className="text-white/70 text-sm">
-                  <em>Dieser Abschnitt ist nur relevant für reglementierte Berufe.</em>
-                </p>
-              </div>
-            </section>
+            <div className="text-center py-4">
+              <p className="text-white/60 text-lg">⸻</p>
+            </div>
 
-            {/* EU Dispute Resolution */}
+            {/* Content Liability */}
             <section>
-              <h2 className="text-2xl font-semibold mb-4">EU-Streitschlichtung</h2>
+              <h2 className="text-2xl font-semibold mb-4">Haftung für Inhalte</h2>
               <div className="bg-white/5 rounded-lg p-6">
                 <p className="text-white/80 leading-relaxed">
-                  Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: 
+                  Als Diensteanbieter sind wir gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG sind wir jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine entsprechende Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden entsprechender Rechtsverletzungen entfernen wir diese Inhalte umgehend.
+                </p>
+              </div>
+            </section>
+
+            <div className="text-center py-4">
+              <p className="text-white/60 text-lg">⸻</p>
+            </div>
+
+            {/* Link Liability */}
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">Haftung für Links</h2>
+              <div className="bg-white/5 rounded-lg p-6">
+                <p className="text-white/80 leading-relaxed">
+                  Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb übernehmen wir für diese fremden Inhalte auch keine Gewähr. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft – rechtswidrige Inhalte waren zu diesem Zeitpunkt nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen entfernen wir derartige Links umgehend.
+                </p>
+              </div>
+            </section>
+
+            <div className="text-center py-4">
+              <p className="text-white/60 text-lg">⸻</p>
+            </div>
+
+            {/* Copyright */}
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">Urheberrecht</h2>
+              <div className="bg-white/5 rounded-lg p-6">
+                <p className="text-white/80 leading-relaxed">
+                  Die durch die Seitenbetreiber erstellten Inhalte und Werke auf dieser Webseite unterliegen dem deutschen Urheberrecht. Beiträge Dritter sind entsprechend gekennzeichnet. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung des jeweiligen Autors. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.
+                  Sollten Sie auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen entfernen wir solche Inhalte umgehend.
+                </p>
+              </div>
+            </section>
+
+            <div className="text-center py-4">
+              <p className="text-white/60 text-lg">⸻</p>
+            </div>
+
+            {/* Dispute Resolution */}
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">Streitschlichtung</h2>
+              <div className="bg-white/5 rounded-lg p-6 space-y-4">
+                <p className="text-white/80 leading-relaxed">
+                  Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
+                </p>
+                <p>
                   <a 
                     href="https://ec.europa.eu/consumers/odr/" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-blue-300 hover:text-blue-200 underline ml-1"
+                    className="text-blue-300 hover:text-blue-200 underline"
                   >
                     https://ec.europa.eu/consumers/odr/
                   </a>
                 </p>
-                <p className="text-white/80 mt-4 leading-relaxed">
-                  Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer 
-                  Verbraucherschlichtungsstelle teilzunehmen.
-                </p>
-              </div>
-            </section>
-
-            {/* Liability Disclaimer */}
-            <section>
-              <h2 className="text-2xl font-semibold mb-4">Haftungsausschluss</h2>
-              <div className="bg-white/5 rounded-lg p-6 space-y-4">
-                <div>
-                  <h3 className="font-semibold text-lg mb-2">Inhalt des Onlineangebotes</h3>
-                  <p className="text-white/80 leading-relaxed">
-                    Der Autor übernimmt keinerlei Gewähr für die Aktualität, Korrektheit, Vollständigkeit 
-                    oder Qualität der bereitgestellten Informationen. Haftungsansprüche gegen den Autor, 
-                    welche sich auf Schäden materieller oder ideeller Art beziehen, die durch die Nutzung 
-                    oder Nichtnutzung der dargebotenen Informationen bzw. durch die Nutzung fehlerhafter 
-                    und unvollständiger Informationen verursacht wurden, sind grundsätzlich ausgeschlossen.
-                  </p>
-                </div>
-                
-                <div>
-                  <h3 className="font-semibold text-lg mb-2">Verweise und Links</h3>
-                  <p className="text-white/80 leading-relaxed">
-                    Bei direkten oder indirekten Verweisen auf fremde Internetseiten („Links"), die außerhalb 
-                    des Verantwortungsbereiches des Autors liegen, würde eine Haftungsverpflichtung ausschließlich 
-                    in dem Fall in Kraft treten, in dem der Autor von den Inhalten Kenntnis hat und es ihm technisch 
-                    möglich und zumutbar wäre, die Nutzung im Falle rechtswidriger Inhalte zu verhindern.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="font-semibold text-lg mb-2">Urheberrecht</h3>
-                  <p className="text-white/80 leading-relaxed">
-                    Der Autor ist bestrebt, in allen Publikationen die Urheberrechte der verwendeten Grafiken, 
-                    Tondokumente, Videosequenzen und Texte zu beachten, von ihm selbst erstellte Grafiken, 
-                    Tondokumente, Videosequenzen und Texte zu nutzen oder auf lizenzfreie Grafiken, Tondokumente, 
-                    Videosequenzen und Texte zurückzugreifen.
-                  </p>
-                </div>
-              </div>
-            </section>
-
-            {/* Data Protection Reference */}
-            <section>
-              <h2 className="text-2xl font-semibold mb-4">Datenschutz</h2>
-              <div className="bg-white/5 rounded-lg p-6">
                 <p className="text-white/80 leading-relaxed">
-                  Sofern innerhalb des Internetangebotes die Möglichkeit zur Eingabe persönlicher oder 
-                  geschäftlicher Daten (Emailadressen, Namen, Anschriften) besteht, so erfolgt die Preisgabe 
-                  dieser Daten seitens des Nutzers auf ausdrücklich freiwilliger Basis. Die Nutzung und 
-                  Bezahlung aller angebotenen Dienste ist – soweit technisch möglich und zumutbar – auch 
-                  ohne Angabe solcher Daten bzw. unter Angabe anonymisierter Daten oder eines Pseudonyms gestattet.
-                </p>
-                <p className="text-white/80 mt-4">
-                  Detaillierte Informationen zum Datenschutz finden Sie in unserer 
-                  <Link to="/datenschutz" className="text-blue-300 hover:text-blue-200 underline ml-1">
-                    Datenschutzerklärung
-                  </Link>.
+                  Wir sind nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
                 </p>
               </div>
             </section>
