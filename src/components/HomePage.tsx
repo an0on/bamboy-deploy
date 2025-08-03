@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import TextPressure from './TextPressure';
 import SplashCursor from './SplashCursor';
 import VariableProximity from './VariableProximity';
@@ -166,9 +167,9 @@ export const HomePage = () => {
               "Code is poetry written in logic."
             </p>
             <div className="flex flex-wrap justify-center gap-6 text-sm">
-              <a href="#" className="hover:text-white transition-colors hover:underline">
+              <Link to="/impressum" className="hover:text-white transition-colors hover:underline">
                 Impressum
-              </a>
+              </Link>
               <a href="#" className="hover:text-white transition-colors hover:underline">
                 Datenschutz
               </a>
