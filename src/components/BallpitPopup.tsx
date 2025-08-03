@@ -25,7 +25,7 @@ const BallpitPopup: React.FC<BallpitPopupProps> = ({ onClose }) => {
   }, [onClose]);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80 backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10">
       {/* ESC Hint */}
       <div className="absolute top-4 right-4 z-60">
         <div className="bg-white/10 backdrop-blur-md rounded-lg px-3 py-2 text-white text-sm font-medium border border-white/20">
