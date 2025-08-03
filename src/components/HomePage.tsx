@@ -170,15 +170,6 @@ export const HomePage = () => {
               <Link to="/impressum" className="hover:text-white transition-colors hover:underline">
                 Impressum
               </Link>
-              <a href="#" className="hover:text-white transition-colors hover:underline">
-                Datenschutz
-              </a>
-              <a href="#" className="hover:text-white transition-colors hover:underline">
-                Kontakt
-              </a>
-              <a href="#" className="hover:text-white transition-colors hover:underline">
-                AGB
-              </a>
             </div>
             <p className="text-xs text-white/60">
               © 2024 BAMBOY. Made with 💚 and lots of 🥦 in Germany
