@@ -1,8 +1,19 @@
 import { motion } from 'framer-motion';
 import { ArrowLeft } from 'lucide-react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export const Impressum = () => {
+  const [showEmail, setShowEmail] = useState(false);
+  
+  // Email protection with simple encoding
+  const decodeEmail = () => {
+    // Simple ROT13-like encoding for email protection
+    const encoded = 'fcvryfrghpugvt@jro.qr';
+    return encoded.replace(/[a-zA-Z]/g, function(c) {
+      return String.fromCharCode((c <= "Z" ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26);
+    });
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-700 via-blue-600 to-green-500 py-20">
@@ -48,7 +59,31 @@ export const Impressum = () => {
                 <p>Niels Zimmermann</p>
                 <p>Kennenburgerstr. 43</p>
                 <p>73732 Esslingen am Neckar</p>
-                <p>E-Mail: spielsuechtig@web.de</p>
+                <div>
+                  <strong>E-Mail:</strong>
+                  {!showEmail ? (
+                    <motion.button
+                      onClick={() => setShowEmail(true)}
+                      className="ml-2 px-3 py-1 bg-blue-500/20 hover:bg-blue-500/30 rounded border border-blue-400/30 transition-colors duration-300"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      E-Mail anzeigen
+                    </motion.button>
+                  ) : (
+                    <motion.span
+                      className="ml-2 text-blue-300"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      {decodeEmail()}
+                    </motion.span>
+                  )}
+                </div>
+                <p className="text-white/70 text-sm">
+                  <em>Hinweis: Die E-Mail-Adresse wird aus Spam-Schutzgründen nur auf Anfrage angezeigt.</em>
+                </p>
               </div>
             </section>
 
