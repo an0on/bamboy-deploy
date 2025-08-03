@@ -1,13 +1,15 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import TextPressure from './TextPressure';
 import SplashCursor from './SplashCursor';
 import VariableProximity from './VariableProximity';
 import DecryptedText from './DecryptedText';
 import Magnet from './Magnet';
 import Orb from './Orb';
+import BallpitPopup from './BallpitPopup';
 
 export const HomePage = () => {
   const containerRef = useRef(null);
+  const [showBallpit, setShowBallpit] = useState(false);
 
   return (
     <>
@@ -116,7 +118,16 @@ export const HomePage = () => {
           {/* Text Content */}
           <div className="relative z-10 text-center">
             <blockquote className="text-xl md:text-2xl text-white/90 font-light italic max-w-4xl mx-auto">
-              "Sometimes the best ideas come when you<br />play with bubbles."
+              "They said AI would take over the world. Plot twist: It just wants to{" "}
+              <Magnet padding={50} disabled={false} magnetStrength={3}>
+                <span 
+                  className="cursor-pointer text-white hover:text-blue-300 transition-colors"
+                  onClick={() => setShowBallpit(true)}
+                >
+                  play
+                </span>
+              </Magnet>
+              {" "}with bubbles."
               <footer className="mt-4 text-sm text-white/70">— Tech Optimist</footer>
             </blockquote>
           </div>
@@ -142,6 +153,11 @@ export const HomePage = () => {
           </blockquote>
         </div>
       </section>
+
+      {/* Ballpit Popup */}
+      {showBallpit && (
+        <BallpitPopup onClose={() => setShowBallpit(false)} />
+      )}
     </>
   );
 };

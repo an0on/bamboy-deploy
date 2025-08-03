@@ -1,0 +1,65 @@
+import React, { useEffect } from 'react';
+import Ballpit from './Ballpit';
+
+interface BallpitPopupProps {
+  onClose: () => void;
+}
+
+const BallpitPopup: React.FC<BallpitPopupProps> = ({ onClose }) => {
+  useEffect(() => {
+    const handleEscKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    document.addEventListener('keydown', handleEscKey);
+    
+    // Prevent scrolling on background
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.removeEventListener('keydown', handleEscKey);
+      document.body.style.overflow = 'auto';
+    };
+  }, [onClose]);
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80 backdrop-blur-sm">
+      {/* ESC Hint */}
+      <div className="absolute top-4 right-4 z-60">
+        <div className="bg-white/10 backdrop-blur-md rounded-lg px-3 py-2 text-white text-sm font-medium border border-white/20">
+          Press <kbd className="px-2 py-1 text-xs font-semibold text-gray-800 bg-white rounded">ESC</kbd> to close
+        </div>
+      </div>
+
+      {/* Ballpit Container */}
+      <div className="w-full h-full max-w-none max-h-none">
+        <div style={{
+          position: 'relative', 
+          overflow: 'hidden', 
+          minHeight: '100vh', 
+          maxHeight: '100vh', 
+          width: '100%'
+        }}>
+          <Ballpit
+            count={200}
+            gravity={0.7}
+            friction={0.8}
+            wallBounce={0.95}
+            followCursor={true}
+            colors={[0x9f41ff, 0x4ade80, 0xff7f00]} // Purple, Green, Orange
+          />
+        </div>
+      </div>
+
+      {/* Click outside to close */}
+      <div 
+        className="absolute inset-0 -z-10"
+        onClick={onClose}
+      />
+    </div>
+  );
+};
+
+export default BallpitPopup;
