@@ -519,7 +519,7 @@ const XConfig = {
   minSize: 0.5,
   maxSize: 1,
   size0: 1,
-  gravity: 0.0075, // Reduced to 75% of previous setting (0.01)
+  gravity: 0.006, // Increased to 80% of previous setting (0.0075)
   friction: 0.9975, // Updated from screenshot
   wallBounce: 0.95,
   maxVelocity: 0.15,

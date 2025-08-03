@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Ballpit from './Ballpit';
+import ShinyText from './ShinyText';
 
 interface BallpitPopupProps {
   onClose: () => void;
@@ -32,7 +33,9 @@ const BallpitPopup: React.FC<BallpitPopupProps> = ({ onClose }) => {
           className="bg-white/10 backdrop-blur-md rounded-lg px-3 py-2 text-white text-sm font-medium border border-white/20 cursor-pointer hover:bg-white/20 transition-all duration-200"
           onClick={onClose}
         >
-          Press <kbd className="px-2 py-1 text-xs font-semibold text-gray-800 bg-white rounded hover:bg-gray-100 transition-colors">ESC</kbd> to close
+          Press <kbd className="px-2 py-1 text-xs font-semibold text-gray-800 bg-white rounded hover:bg-gray-100 transition-colors">
+            <ShinyText text="ESC" disabled={false} speed={3} className="text-gray-800" />
+          </kbd> to close
         </div>
       </div>
 
@@ -47,7 +50,7 @@ const BallpitPopup: React.FC<BallpitPopupProps> = ({ onClose }) => {
         }}>
           <Ballpit
             count={100}
-            gravity={0.0075}
+            gravity={0.006}
             friction={0.9975}
             wallBounce={0.95}
             followCursor={true}
