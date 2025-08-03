@@ -120,7 +120,7 @@ export const HomePage = () => {
                     "They said AI would take over<br />
                     the world. Plot twist:<br />
                     It just wants to{" "}
-                    <Magnet padding={30} disabled={false} magnetStrength={3}>
+                    <Magnet padding={300} disabled={false} magnetStrength={3}>
                       <span 
                         className="cursor-pointer text-white hover:text-blue-300 transition-colors underline decoration-blue-300/50 hover:decoration-blue-300"
                         onClick={() => setShowBallpit(true)}

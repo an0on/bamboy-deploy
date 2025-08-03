@@ -29,25 +29,15 @@ const BallpitPopup: React.FC<BallpitPopupProps> = ({ onClose }) => {
       {/* ESC Hint */}
       <div className="absolute top-4 right-4 z-60">
         <div 
-          className="bg-white/10 backdrop-blur-md rounded-lg px-3 py-2 text-white text-sm font-medium border border-white/20 cursor-pointer hover:bg-white/20 transition-all duration-200"
+          className="bg-white/10 backdrop-blur-md rounded-lg px-4 py-3 text-white text-sm font-medium border border-white/20 cursor-pointer hover:bg-white/20 transition-all duration-200 animate-shine"
           onClick={onClose}
+          style={{
+            backgroundImage: 'linear-gradient(120deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0) 60%)',
+            backgroundSize: '200% 100%',
+            animationDuration: '3s',
+          }}
         >
-          Press{" "}
-          <kbd 
-            className="px-2 py-1 text-xs font-semibold bg-white rounded hover:bg-gray-100 transition-colors cursor-pointer animate-shine"
-            onClick={onClose}
-            style={{
-              backgroundImage: 'linear-gradient(120deg, #1f2937 40%, #ffffff 50%, #1f2937 60%)',
-              backgroundSize: '200% 100%',
-              WebkitBackgroundClip: 'text',
-              backgroundClip: 'text',
-              color: 'transparent',
-              animationDuration: '3s',
-            }}
-          >
-            ESC
-          </kbd>
-          {" "}to close
+          Press <kbd className="px-2 py-1 text-xs font-semibold text-gray-800 bg-white rounded ml-1 mr-1">ESC</kbd> to close
         </div>
       </div>
 
