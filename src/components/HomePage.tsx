@@ -158,6 +158,34 @@ export const HomePage = () => {
         </div>
       </section>
 
+      {/* Main Page Footer */}
+      <footer className="relative z-40 bg-black/20 backdrop-blur-md border-t border-white/10 py-8 mt-0">
+        <div className="max-w-6xl mx-auto px-4 text-center">
+          <div className="text-white/80 space-y-4">
+            <p className="text-lg md:text-xl italic font-light">
+              "Code is poetry written in logic."
+            </p>
+            <div className="flex flex-wrap justify-center gap-6 text-sm">
+              <a href="#" className="hover:text-white transition-colors hover:underline">
+                Impressum
+              </a>
+              <a href="#" className="hover:text-white transition-colors hover:underline">
+                Datenschutz
+              </a>
+              <a href="#" className="hover:text-white transition-colors hover:underline">
+                Kontakt
+              </a>
+              <a href="#" className="hover:text-white transition-colors hover:underline">
+                AGB
+              </a>
+            </div>
+            <p className="text-xs text-white/60">
+              © 2024 BAMBOY. Made with ❤️ and lots of ☕ • Crafted with passion for the digital future
+            </p>
+          </div>
+        </div>
+      </footer>
+
       {/* Ballpit Popup */}
       {showBallpit && (
         <BallpitPopup onClose={() => setShowBallpit(false)} />
