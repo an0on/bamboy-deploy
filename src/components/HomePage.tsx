@@ -112,24 +112,28 @@ export const HomePage = () => {
                 hue={130}
                 forceHoverState={false}
               />
+              
+              {/* Text Content Inside Orb */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center max-w-sm sm:max-w-md lg:max-w-lg xl:max-w-xl px-4">
+                  <blockquote className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 font-light italic leading-relaxed">
+                    "They said AI would take over<br />
+                    the world. Plot twist:<br />
+                    It just wants to{" "}
+                    <Magnet padding={30} disabled={false} magnetStrength={3}>
+                      <span 
+                        className="cursor-pointer text-white hover:text-blue-300 transition-colors underline decoration-blue-300/50 hover:decoration-blue-300"
+                        onClick={() => setShowBallpit(true)}
+                      >
+                        play
+                      </span>
+                    </Magnet>
+                    <br />with bubbles."
+                    <footer className="mt-3 text-xs sm:text-sm text-white/70">— Tech Optimist</footer>
+                  </blockquote>
+                </div>
+              </div>
             </div>
-          </div>
-          
-          {/* Text Content */}
-          <div className="relative z-10 text-center">
-            <blockquote className="text-xl md:text-2xl text-white/90 font-light italic max-w-4xl mx-auto">
-              "They said AI would take over the world. Plot twist: It just wants to{" "}
-              <Magnet padding={50} disabled={false} magnetStrength={3}>
-                <span 
-                  className="cursor-pointer text-white hover:text-blue-300 transition-colors"
-                  onClick={() => setShowBallpit(true)}
-                >
-                  play
-                </span>
-              </Magnet>
-              {" "}with bubbles."
-              <footer className="mt-4 text-sm text-white/70">— Tech Optimist</footer>
-            </blockquote>
           </div>
         </div>
       </section>

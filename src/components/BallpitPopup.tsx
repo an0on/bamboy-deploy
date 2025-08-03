@@ -43,9 +43,9 @@ const BallpitPopup: React.FC<BallpitPopupProps> = ({ onClose }) => {
           width: '100%'
         }}>
           <Ballpit
-            count={200}
-            gravity={0.7}
-            friction={0.8}
+            count={100}
+            gravity={0.01}
+            friction={0.9975}
             wallBounce={0.95}
             followCursor={true}
             colors={[0x9f41ff, 0x4ade80, 0xff7f00]} // Purple, Green, Orange

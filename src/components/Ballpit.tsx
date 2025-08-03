@@ -505,7 +505,7 @@ class Y extends MeshPhysicalMaterial {
 
 // Configuration matching the parameters from the screenshot UI
 const XConfig = {
-  count: 200,
+  count: 100, // Updated from screenshot
   colors: [0x9f41ff, 0x4ade80, 0xff7f00], // Purple, Green, Orange from screenshots
   ambientColor: 0xffffff,
   ambientIntensity: 1,
@@ -519,8 +519,8 @@ const XConfig = {
   minSize: 0.5,
   maxSize: 1,
   size0: 1,
-  gravity: 0.7, // From screenshot
-  friction: 0.8, // From screenshot (0.9975 -> 0.8 per UI)
+  gravity: 0.01, // Updated from screenshot
+  friction: 0.9975, // Updated from screenshot
   wallBounce: 0.95,
   maxVelocity: 0.15,
   maxX: 5,
