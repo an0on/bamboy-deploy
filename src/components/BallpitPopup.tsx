@@ -28,8 +28,11 @@ const BallpitPopup: React.FC<BallpitPopupProps> = ({ onClose }) => {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10">
       {/* ESC Hint */}
       <div className="absolute top-4 right-4 z-60">
-        <div className="bg-white/10 backdrop-blur-md rounded-lg px-3 py-2 text-white text-sm font-medium border border-white/20">
-          Press <kbd className="px-2 py-1 text-xs font-semibold text-gray-800 bg-white rounded">ESC</kbd> to close
+        <div 
+          className="bg-white/10 backdrop-blur-md rounded-lg px-3 py-2 text-white text-sm font-medium border border-white/20 cursor-pointer hover:bg-white/20 transition-all duration-200"
+          onClick={onClose}
+        >
+          Press <kbd className="px-2 py-1 text-xs font-semibold text-gray-800 bg-white rounded hover:bg-gray-100 transition-colors">ESC</kbd> to close
         </div>
       </div>
 
@@ -44,7 +47,7 @@ const BallpitPopup: React.FC<BallpitPopupProps> = ({ onClose }) => {
         }}>
           <Ballpit
             count={100}
-            gravity={0.01}
+            gravity={0.0075}
             friction={0.9975}
             wallBounce={0.95}
             followCursor={true}
